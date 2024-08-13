@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta _id="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            display: flex;
+            margin:10px 30%;
+            border: 2px solid black;
+        }
+        button a{
+
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome ! <b><%= result.name %></b></h2>
+    <h3>email - <%= result.email %></h3>
+    <hr>
+    <% if(result.year ==1){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths1">Engg Mathmatics-1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Physics">Physics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electricals">Electricals</a></button>
+        <button><a href="/attendance/<%= result._id %>/Pps">Programing for problem solving</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills1">Soft skills -1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths2">Engg Mathmatics-2</a></button>
+        <button><a href="/attendance/<%= result._id %>/Chemistry">Chemistry</a></button>
+        <button><a href="/attendance/<%= result._id %>/Mechanical">Mechanical</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electronics">Electronics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills2">Soft skills -2</a></button>
+    <% } %>
+
+    <% if(result.year ==2){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths1">Engg Mathmatics-1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Physics">Physics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electricals">Electricals</a></button>
+        <button><a href="/attendance/<%= result._id %>/Pps">Programing for problem solving</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills1">Soft skills -1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths2">Engg Mathmatics-2</a></button>
+        <button><a href="/attendance/<%= result._id %>/Chemistry">Chemistry</a></button>
+        <button><a href="/attendance/<%= result._id %>/Mechanical">Mechanical</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electronics">Electronics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills2">Soft skills -2</a></button>
+    <% } %>
+    <% if(result.year ==3){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths1">Engg Mathmatics-1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Physics">Physics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electricals">Electricals</a></button>
+        <button><a href="/attendance/<%= result._id %>/Pps">Programing for problem solving</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills1">Soft skills -1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths2">Engg Mathmatics-2</a></button>
+        <button><a href="/attendance/<%= result._id %>/Chemistry">Chemistry</a></button>
+        <button><a href="/attendance/<%= result._id %>/Mechanical">Mechanical</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electronics">Electronics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills2">Soft skills -2</a></button>
+    <% } %>
+    <% if(result.year ==4){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths1">Engg Mathmatics-1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Physics">Physics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electricals">Electricals</a></button>
+        <button><a href="/attendance/<%= result._id %>/Pps">Programing for problem solving</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills1">Soft skills -1</a></button>
+        <button><a href="/attendance/<%= result._id %>/Enggmaths2">Engg Mathmatics-2</a></button>
+        <button><a href="/attendance/<%= result._id %>/Chemistry">Chemistry</a></button>
+        <button><a href="/attendance/<%= result._id %>/Mechanical">Mechanical</a></button>
+        <button><a href="/attendance/<%= result._id %>/Electronics">Electronics</a></button>
+        <button><a href="/attendance/<%= result._id %>/Softskills2">Soft skills -2</a></button>
+    <% } %>
+    
+</body>
+</html>

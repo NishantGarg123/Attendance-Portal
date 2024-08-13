@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your attendance</title>
+    <style>
+        table{
+
+            border: 2px solid black;
+        }
+        tr td
+        {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>attendance of <%= subjectName %></h1>
+    <hr>
+        <h4>Total lecture = <%= result.length %></h4>
+        <% let i=0; %>
+        <% for(res of result){ %>
+            <% if(res.present == true){
+                i++;
+            } %>
+        <% } %>
+        <h4>Attempt lecture = <%= i  %></h4>
+        <h4>Percentage of attendance = <%= (i/(result.length))*100  %> %</h4>
+        <hr>    
+        <h2>
+            <% if(result.length == 0){ %>
+                <h2>No attendance found</h2>
+                <% } %>
+        </h2>
+        <% if(result.length !=0){ %>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Present</th>
+                </tr>
+            <% for(res of result){ %>
+                <tr>
+                    <% let date =(res.date)  %>
+                    <td><%= date  %></td>    
+                        <% if(res.present == true){ %>
+                        <td><input type="checkbox" checked></td>
+                        <% } %>
+                        <% if(res.present == false){ %>
+                        <td><input type="checkbox"></td>
+                        <% } %>
+                </tr>
+            <% } %>
+        <% } %>
+        </table>
+    
+    
+</body>
+</html>
