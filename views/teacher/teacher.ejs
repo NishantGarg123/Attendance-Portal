@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome <%= result.name %></title>
+    <style>
+        select , button{
+            margin: 10px 30%;
+            width: 250px;
+
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome ! "<%= result.name %> "with  email :- <i> <%= result.email %></i> </h2>
+    <hr>
+    
+    <h3>Now you can mark the attendance of any year of any subject :-</h3>
+    <% if(role == "year"){ %>
+    <form action="/attendance/<%= result.name%>/<%= result._id %>/Tsubject">
+        <select name="year" id="year">
+            <option value="first">first year</option>
+            <option value="second">second year</option>
+            <option value="third">third  year</option>
+            <option value="fourth">fourth year</option>
+        </select><br>
+        <button>submit</button>
+    </form>
+<% } %>
+
+    
+</body>
+</html>
