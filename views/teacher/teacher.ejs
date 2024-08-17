@@ -17,17 +17,16 @@
     <hr>
     
     <h3>Now you can mark the attendance of any year of any subject :-</h3>
-    <% if(role == "year"){ %>
-    <form action="/attendance/<%= result.name%>/<%= result._id %>/Tsubject">
+    
+    <form method="post" action="/attendance/<%= result._id %>">
         <select name="year" id="year">
-            <option value="first">first year</option>
-            <option value="second">second year</option>
-            <option value="third">third  year</option>
-            <option value="fourth">fourth year</option>
+            <option value="1">first year</option>
+            <option value="2">second year</option>
+            <option value="3">third  year</option>
+            <option value="4">fourth year</option>
         </select><br>
         <button>submit</button>
     </form>
-<% } %>
 
     
 </body>
