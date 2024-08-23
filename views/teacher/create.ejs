@@ -1,40 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty account</title>
-</head>
-<body>
-    <h2>Welcome You are going to create a faculty member  account -</h2>
-    <hr>
+<% layout("/layouts/boilerplate.ejs") %>
 
-    <form method="post" action="/attendance/Tcreate">
+    <body>
+        <h2>Welcome You are going to create a faculty member account -</h2><br>
 
-        <label for="name">Name :</label>
-        <input type="text" placeholder="enter your name" name="name"><br><br>
+        <div class="row">
+            <div class="col-8 ">
+                <form method="post" action="/attendance/Tcreate">
+                    <div class="mb-3">
+                        <label for="name">Name :</label>
+                        <input type="text" placeholder="enter your name" name="name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">email :</label>
+                        <input type="email" placeholder="enter your email" name="email" class="form-control">
+                    </div>
 
-        <label for="email">email :</label>
-        <input type="email" placeholder="enter your email" name="email"><br><br>
+                    <div class="row">
 
-        <label for="password">Password :</label>
-        <input type="password" placeholder="enter your password" name="password"><br><br>
-
-        <label for="password">Confirm Password :</label>
-        <input type="password" placeholder="enter your Confirm password" name="cpassword"><br><br>
-
-        <label for="dob">DOB :</label>
-        <input type="date" placeholder="enter your date of birth" name="dob"><br><br>
-
-        <label for="dob">College id :</label>
-        <input type="password" placeholder="enter your college id" name="collegeid"><br><br>
-
-        <label for="workingExperience">Experience :</label><br>
-        <textarea name="workingExperience" rows="12" cols="50"></textarea><br><br>
-
-        <button>submit</button>
-
-    </form>
+                        <div class="mb-3 col-md-6">
+                            <label for="password">Password :</label>
+                            <input type="password" placeholder="enter your password" name="password" class="form-control">
+                        </div>
     
-</body>
-</html>
+                        <div class="mb-3 col-md-6">
+                            <label for="password">Confirm Password :</label>
+                            <input type="password" placeholder="enter your Confirm password" name="cpassword"
+                                class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="dob">DOB :</label>
+                        <input type="date" placeholder="enter your date of birth" name="dob" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dob">College id :</label>
+                        <input type="password" placeholder="enter your college id" name="collegeid"
+                            class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="workingExperience">Experience :</label><br>
+                        <textarea name="workingExperience" rows="5" cols="30" class="form-control"></textarea><br>
+                    </div>
+            </div>
+        </div>
+
+        <button class="btn btn-dark">submit</button><br><br>
+        </form>
+    </body>
