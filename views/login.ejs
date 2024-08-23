@@ -1,38 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
-</head>
+<% layout("/layouts/boilerplate.ejs") %>
 <body>
     <h2>Login as a Student</h2>
-    <form  method=POST action="/attendance/login">
-        <label for="email">Email</label>
-        <input type="email" placeholder="enter your email" name="email">
+    <div class="row">
+        <form  method=POST action="/attendance/login">
+    <div class="col-8">
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" placeholder="enter your email" name="email" class="form-control">    
 
-        <label for="pass">Password</label>
-        <input type="password" name="pass" placeholder="enter yor password">
-
-        <button>submit</button>
-    </form>
-    <br>
-    <button><a href="/attendance/create">create a new account</a></button>
-    <hr>
-
+            <div class="mb-3">
+                <label for="pass">Password</label>
+                <input type="password" name="pass" placeholder="enter your password" class="form-control">    
+            </div>        
+        </div>
+    </div>
+            <button class="btn btn-dark">submit</button>
+        </form>
+    </div>
+    <br><br>
+    <button class="btn btn-dark"><a href="/attendance/create" class="create-acc">create a new account</a></button>
+    
+<hr>
     <h2>Login as a Teacher</h2>
-    <form  method=POST action="/attendance/Tlogin">
-        <label for="email">Email</label>
-        <input type="email" placeholder="enter your email" name="email">
-
-        <label for="pass">Password</label>
-        <input type="password" name="pass" placeholder="enter yor password">
-
-        <button>submit</button>
-    </form>
-    <br>
-    <button><a href="/attendance/Tcreate">create a new account</a></button>
+    <div class="row">
+        <form  method=POST action="/attendance/Tlogin">
+            <div class="col-8">
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="enter your email" name="email" class="form-control">    
+                </div>
+                <div class="mb-3">
+                    <label for="pass">Password</label>
+                    <input type="password" name="pass" placeholder="enter your password" class="form-control">    
+                </div>
+            </div>
+            <button class="btn btn-dark">submit</button>
+        </form>
+    </div>
+    <br><br>
+    <button class="btn btn-dark"><a href="/attendance/Tcreate" class="create-acc">create a new account</a></button>
 
     
 </body>
-</html>
