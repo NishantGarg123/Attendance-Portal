@@ -4,12 +4,20 @@ const express = require('express');
 const { type } = require('os');
 const app = express();
 const port = 8080;
-
+const methodOverride = require('method-override');
+const wrapAsync = require("./utils/wrapAsync.js");
+const ExpressError = require("./utils/ExpressError.js");
+//========================================================================>>
+//foe ejs-mate 
+const ejsMate = require("ejs-mate");
+app.engine('ejs',ejsMate);
+//========================================================================>>
 path = require("path");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 //========================================================================>>
 
 
@@ -29,7 +37,7 @@ const college2024 = mongoose.createConnection('mongodb://127.0.0.1:27017/college
 
 //========================================================================>>
 //Schema of tables
-const studentPresentSchema = mongoose.Schema({
+const studentPresentSchema =new mongoose.Schema({
 
     id: {
         type: String,
@@ -67,7 +75,7 @@ const studentSchema = new mongoose.Schema({
     password: {
         type: String,
         require: true,
-        unique: true
+        
     },
     year: {
         type: String,
@@ -82,7 +90,7 @@ const studentSchema = new mongoose.Schema({
     }
 });
 //Teacher Schema
-const TeacherSchema = ({
+const TeacherSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
@@ -95,7 +103,7 @@ const TeacherSchema = ({
     password: {
         type: String,
         require: true,
-        unique: true
+        
     },
     dob: {
         type: String,
@@ -181,249 +189,457 @@ const CloudComputing = year42024.model("CloudComputing", studentPresentSchema);
 //student model
 const Student = college2024.model("Student", studentSchema);
 const Teacher = college2024.model("Teacher", TeacherSchema);
+
+const AdminSchema =new mongoose.Schema({
+    name:{
+      type:String,
+      require:true
+    },
+    email:{
+        type:String,
+        require:true
+    },
+    adminPass:{
+        type:String,
+        require:true
+    },
+    studentPass:{
+        type:String,
+        require:true
+    },
+    teacherPass:{
+        type:String,
+        require:true
+    }
+});
+
+const  Head_Teacher = college2024.model("Head_Teacher", AdminSchema);
+const { log } = require('console');
+
+//========================================================================>>
+// const Admin = async()=>{
+
+//     const admin = new Head_Teacher({
+//         name:"nishant garg",
+//         email:"gargacsnishant@gmail.com",
+//         adminPass:"9105060079",
+//         studentPass:"7088177858",
+//         teacherPass:"9758674359"
+//     });
+//     await admin.save();
+// }
+// Admin();
+
 //========================================================================>>
 
 
-
-//========================================================================>>
-
 //########################################################################################################
-//Root port
-app.get("/", (req, res) => {
-    res.send("working");
-});
-//########################################################################################################
-
-
-//########################################################################################################
-//home route
-app.get("/attendance", (req, res) => {
-    res.render("home.ejs");
-});
-//########################################################################################################
-
-//########################################################################################################
-//Login route
-app.get("/attendance/login", (req, res) => {
-    res.render("login.ejs");
-});
-//login and redirect to presenttion route
-app.post("/attendance/login", (req, res) => {
-    let { email, pass } = req.body;
-    Student.findOne({ email: email })
-        .then(result => {
-            if (result.password != pass) {
-                let err = "password or email does not matched";
-                res.render("error.ejs", { err });
-            }
-            else {
-                res.render("student/student.ejs", { result });
-            }
-        })
-        .catch(err => {
-            res.render("error.ejs", { err });
+//All route
+        //Root port
+        app.get("/", (req, res , next) => {
+                // next();
         });
-});
-//########################################################################################################
 
 
-//########################################################################################################
-//create route
-app.get("/attendance/create", (req, res) => {
-    res.render("student/create.ejs");
-});
-//push data of new account
-app.post("/attendance/create", (req, res) => {
-    let { name, email, pass, cpass, year, dob, collegeid } = req.body;
-    if (pass != cpass) {
-        let err = "passwords and confirm password are not same";
-        res.render("error.ejs", { err });
-    }
-    if (collegeid != 111) {
-        let err = "college id is not correct";
-        res.render("error.ejs", { err });
-
-    }
-    else {
-        const new_student = new Student({
-            name: name,
-            email: email,
-            password: pass,
-            year: year,
-            dob: dob,
-            created_at: new Date()
+    //########################################################################################################
+    //All head route
+    
+        //========================================================================================================>>
+        //head route
+        app.get("/attendance/head",(req , res)=>{
+            res.render("head/login.ejs");
         });
-        new_student.save()
-            .then(result => {
-                res.redirect("/attendance/login");
+
+        app.post("/attendance/head",(req , res)=>{
+
+            let {email , password } = req.body;
+            // console.log(email);
+            Head_Teacher.findOne({email:email})
+            .then(result=>{
+                
+                if(password != result.adminPass)
+                {
+                    const err= "Password or email is wrong";
+                    res.render("error.ejs",{err});    
+                }
+                else
+                {
+                    //welcome to the our head showing all information
+                        res.render("head/TeacherStudent.ejs",{result});
+                }
             })
-            .catch(err => {
-                res.render("error.ejs", { err });
-            });
-    }
-});
-//########################################################################################################
-//========================================================================>>
-
-
-//========================================================================>>
-//login as a Teacher and give accesss so that they can mark the attendance of student
-
-//create route
-app.get("/attendance/Tcreate", (req, res) => {
-    //render the form to teacher
-    res.render("teacher/create.ejs");
-});
-app.post("/attendance/Tcreate", (req, res) => {
-    let { name, email, password, cpassword, dob, collegeid, workingExperience } = req.body
-    if (password != cpassword) {
-        const err = "password are not match";
-        res.render("error.ejs", { err });
-    }
-    else if (collegeid != 222) {
-        const err = " college id is not verified or you are a invalid teacher";
-        res.render("error.ejs", { err });
-    }
-    else {
-        const new_teacher = new Teacher({
-            name: name,
-            email: email,
-            password: password,
-            dob: dob,
-            created_at: new Date(),
-            workingExperience: workingExperience
-        });
-
-        new_teacher.save()
-            .then(result => {
-                res.redirect("/attendance/login");
+            .catch(err=>{
+                res.render("error.ejs",{err});
             })
-            .catch(err => {
-                res.render("error.ejs", { err });
+        });
+
+        app.post("/attendance/head/studentsInfo",(req , res)=>{
+
+            let {year} = req.body;
+            Student.find({year:year})
+            .then(result=>{
+                res.render("head/AllYearStudent.ejs",{result, year});
+            })
+            .catch(err=>{
+                res.render("error.ejs",{err});
+            })    
+        });
+
+        app.get("/attendance/head/teachersInfo", async(req , res)=>{
+
+            let allTeachers = await Teacher.find({});            
+            res.render("head/AllTeacher.ejs" , {allTeachers});
+        });
+        //========================================================================================================>>
+
+        
+        //========================================================================================================>>
+        //edit the student details
+        app.get("/attendance/head/studentsInfo/:id/edit",(req , res)=>{
+
+            let {id} = req.params;
+            Student.findById(id)
+            .then(result=>{
+                res.render("head/StudentEdit.ejs",{result});
+            })
+            .catch(err=>{
+                res.render("error.ejs",{err});
             });
-    }
-});
 
-//login route display the years in option
-app.post("/attendance/Tlogin", (req, res) => {
-    let { email, pass } = req.body;
-    Teacher.findOne({ email: email })
-        .then(result => {
-            if (result.password != pass) {
-                let err = "password or email does not matched";
-                res.render("error.ejs", { err });
-            }
-            else {
-                res.render("teacher/teacher.ejs", { result });
-            }
         })
-        .catch(err => {
-            res.render("error.ejs", { err });
+
+        app.put("/attendance/head/studentsInfo/:id/edit",wrapAsync( async(req , res)=>{
+
+            let {id} = req.params;
+            let student = req.body.student;
+            await Student.findByIdAndUpdate(id, {...student});
+            res.redirect(`/attendance/head/studentsInfo/${id}/edit`);
+        }));
+        //========================================================================================================>>
+
+        //========================================================================================================>>
+        //delete the student
+        app.get("/attendance/head/studentsInfo/:id/delete",async(req , res)=>{
+
+            let {id } = req.params;
+            await Student.findByIdAndDelete(id);
+            res.send(" Student Deleted");
         });
-});
+        //========================================================================================================>>
 
-//subject displaying route according to the year
-app.post("/attendance/:id", (req, res) => {
-    let { id } = req.params;
-    let { year } = req.body;
-    Teacher.findOne({ _id: id })
-        .then(result => {
-            res.render("teacher/subjects.ejs", { result, year });
-        })
-        .catch(err => {
-            res.render("error.ejs", { err });
+        
+        //========================================================================================================>>
+        // Edit teacher details
+        app.get("/attendance/head/teachersInfo/:id/edit" , async(req , res )=>{
+
+            let {id} = req.params;
+            let teacherDetails = await Teacher.findById(id);
+            res.render("head/TeacherEdit.ejs" , {teacherDetails});
         });
 
-});
+        app.put("/attendance/head/teachersInfo/:id/edit" , async(req , res )=>{
+
+            let {id} = req.params;
+            let teacher = req.body.teacher;
+            await Teacher.findByIdAndUpdate(id , {...teacher});
+            res.redirect(`/attendance/head/teachersInfo/${id}/edit`);
+        });
+
+        //========================================================================================================>>
+
+        //========================================================================================================>>
+        // Delete the Teacher from DB
+        app.get("/attendance/head/teachersInfo/:id/delete" , async(req , res)=>{
+
+            let {id}  = req.params;
+            await Teacher.findOneAndDelete(id);
+            res.send("Teacher Deleted from the DB");
+
+        });
+        //========================================================================================================>>
+
+        //========================================================================================================>>
+        // Password Setting route
+        app.get("/attendance/head/passwordSetting" , async(req , res)=>{
+
+            let admin = await Head_Teacher.find({});
+            admin = admin[0];
+            // console.log(admin);
+            
+            res.render("head/PasswordSetting.ejs",{admin});
+        });
+
+        app.put("/attendance/head/passwordSetting" , async(req , res)=>{
+
+            let adminData = req.body.admin;
+            await Head_Teacher.updateMany({...adminData});
+            res.redirect("/attendance/head/passwordSetting");
+
+        });
+        //========================================================================================================>>
+
+    //########################################################################################################
 
 
-//mark attendance page(displaying the name of student)
 
-app.get("/markattendance/:year/:id/:subjectname", (req, res) => {
+    //########################################################################################################
+            
+        //home route
+        app.get("/attendance", (req, res) => {
+            res.render("home.ejs");
+        });
+        //########################################################################################################
 
-    let { id, year, subjectname } = req.params;
-
-    Teacher.findOne({ _id: id })
-        .then(result => {
-            Student.find({ year: year })
+        //########################################################################################################
+        //Login route
+        app.get("/attendance/login", (req, res) => {
+            res.render("login.ejs");
+        });
+        //login and redirect to presenttion route
+        app.post("/attendance/login", (req, res) => {
+            let { email, pass } = req.body;
+            Student.findOne({ email: email })
                 .then(result => {
-                    res.render("teacher/mark.ejs", { subjectname, result, id, year });
+                    if (result.password != pass) {
+                        let err = "password or email does not matched";
+                        res.render("error.ejs", { err });
+                    }
+                    else {
+                        // const year = result.year;
+                        // const collctions = "collctions"+year;
+                        // console.log(collctions);                
+                        // // const collectionsName = eval(collctions);
+                        // console.log(typeof(collections));
+                        
+
+
+                        res.render("student/student.ejs", { result });
+                    }
                 })
                 .catch(err => {
                     res.render("error.ejs", { err });
                 });
-        })
-        .catch(err => {
-            res.render("error.ejs", { err });
-        })
+        });
+        //########################################################################################################
+
+
+
+        //========================================================================>>
+        //handle the route of subjects (this route will display the attendance of subjects of student).
+        app.get("/attendance/:id/:subjectName", (req, res) => {
+
+            let { id, subjectName } = req.params;
+            const subject = eval(subjectName);
+            subject.find({ id: id })
+                .then(result => {
+
+                    Teacher.find()
+                    .then(teacherResult=>{
+
+                        // res.send(result);
+                        res.render("student/subject.ejs", { result, subjectName , teacherResult });
+                    })
+                    .catch(err=>{
+                        res.render("error.ejs",{err});
+                    })
+                            
+                })
+                .catch(err => {
+                    res.render("error.ejs", { err });
+                });
+        });
+
+        //========================================================================>>
+
+
+        //########################################################################################################
+        //create route
+        app.get("/attendance/create", (req, res) => {
+            res.render("student/create.ejs");
+        });
+        //push data of new account
+        app.post("/attendance/create", async(req, res) => {
+            let { name, email, pass, cpass, year, dob, collegeid } = req.body;
+            const admin = await Head_Teacher.find({});
+            const studPass = admin[0].studentPass;
+            if (pass != cpass) {
+                let err = "passwords and confirm password are not same";
+                res.render("error.ejs", { err });
+            }
+            if (collegeid != studPass) {
+                let err = "Invalid Credentialities";
+                res.render("error.ejs", { err });
+            }
+            else {
+                const new_student = new Student({
+                    name: name,
+                    email: email,
+                    password: pass,
+                    year: year,
+                    dob: dob,
+                    created_at: new Date()
+                });
+                new_student.save()
+                    .then(result => {
+                        res.redirect("/attendance/login");
+                    })
+                    .catch(err => {
+                        res.render("error.ejs", { err });
+                    });
+            }
+        });
+        //########################################################################################################
+        //========================================================================>>
+
+
+        //========================================================================>>
+        //login as a Teacher and give accesss so that they can mark the attendance of student
+
+        //create route
+        app.get("/attendance/Tcreate", (req, res) => {
+            //render the form to teacher
+            res.render("teacher/create.ejs");
+        });
+        app.post("/attendance/Tcreate", async(req, res) => {
+            let { name, email, password, cpassword, dob, collegeid, workingExperience } = req.body
+            const admin = await Head_Teacher.find({});
+            const teachPass = admin[0].teacherPass;
+            if (password != cpassword) {
+                const err = "password are not match";
+                res.render("error.ejs", { err });
+            }
+            else if (collegeid != teachPass) {
+                const err = " college id is not verified or you are a invalid teacher";
+                res.render("error.ejs", { err });
+            }
+            else {
+                const new_teacher = new Teacher({
+                    name: name,
+                    email: email,
+                    password: password,
+                    dob: dob,
+                    created_at: new Date(),
+                    workingExperience: workingExperience
+                });
+
+                new_teacher.save()
+                    .then(result => {
+                        res.redirect("/attendance/login");
+                    })
+                    .catch(err => {
+                        res.render("error.ejs", { err });
+                    });
+            }
+        });
+
+        //login route display the years in option
+        app.post("/attendance/Tlogin", (req, res) => {
+            let { email, pass } = req.body;
+            Teacher.findOne({ email: email })
+                .then(result => {
+                    if (result.password != pass) {
+                        let err = "password or email does not matched";
+                        res.render("error.ejs", { err });
+                    }
+                    else {
+                        res.render("teacher/teacher.ejs", { result });
+                    }
+                })
+                .catch(err => {
+                    res.render("error.ejs", { err });
+                });
+        });
+
+        //subject displaying route according to the year
+        app.post("/attendance/:id", (req, res) => {
+            let { id } = req.params;
+            let { year } = req.body;
+            Teacher.findOne({ _id: id })
+                .then(result => {
+                    res.render("teacher/subjects.ejs", { result, year });
+                })
+                .catch(err => {
+                    res.render("error.ejs", { err });
+                });
+
+        });
+
+
+        //mark attendance page(displaying the name of student)
+
+        app.get("/attendance/:year/:id/:subjectname", (req, res) => {
+
+            let { id, year, subjectname } = req.params;
+
+            Teacher.findOne({ _id: id })
+                .then(result => {
+                    Student.find({ year: year })
+                        .then(result => {
+                            res.render("teacher/mark.ejs", { subjectname, result,id, year });
+                        })
+                        .catch(err => {
+                            res.render("error.ejs", { err });
+                        });
+                })
+                .catch(err => {
+                    res.render("error.ejs", { err });
+                })
+        });
+
+        // POST request handle karne ke liye route define karna
+        app.post("/attendance/:year/:id/:subjectname", (req, res) => {
+            
+            let { id, subjectname, year } = req.params;
+            const { student } = req.body; // 'student' input field ka name hai
+            const subject_name = eval(subjectname);
+            
+            Student.find({year:year})
+            .then(result=>{
+                const attendance = result.map(el =>{
+                    let current_id = (el.id).toString();
+                    return{
+                            id:el._id,
+                            date:new Date(),
+                            present:student.includes(current_id),
+                            marked_by:id
+                    };
+                });
+                
+                subject_name.insertMany(
+                    attendance
+                )
+                .then(result=>{
+                    // console.log(result);
+                    res.send("Attendance marked successfully");
+                })
+                .catch(err=>{ 
+                    res.render("error.ejs",{err});
+                });
+
+                
+            })
+            
+        });
+
+        //========================================================================>>
+
+
+//========================================================================>>
+//middleware for express error
+
+app.all("*", (req , res , next)=>{
+
+    next(new ExpressError(404 , "page not found"));
 });
 
-// POST request handle karne ke liye route define karna
-app.post("/markattendance/:id/:subjectname/:year", (req, res) => {
-    
-    let { id, subjectname, year } = req.params;
-    const { student } = req.body; // 'student' input field ka name hai
-    const subject_name = eval(subjectname);
-    
-    Student.find({year:year})
-    .then(result=>{
-        const attendance = result.map(el =>{
-            let current_id = (el.id).toString();
-            return{
-                    id:el._id,
-                    date:new Date(),
-                    present:student.includes(current_id),
-                    marked_by:id
-            };
-        });
-        
-        subject_name.insertMany(
-            attendance
-        )
-        .then(result=>{
-            // console.log(result);
-            res.send("Attendance marked successfully");
-        })
-        .catch(err=>{ 
-            res.render("error.ejs",{err});
-        });
+app.use((err , req , res , next)=>{
 
-        
-    })
-    
+    let {statusCode = 500 , message = "Page noe found "} = err;
+    res.status(statusCode).send(message);
+
 });
 
 //========================================================================>>
-
-
-
-
-
-
-
-
-//========================================================================>>
-//handle the route of subjects (this route will display the attendance of subjects of student).
-app.get("/attendance/:id/:subjectName", (req, res) => {
-    let { id, subjectName } = req.params;
-    const subject = eval(subjectName);
-    subject.find({ id: id })
-        .then(result => {
-
-            // res.send(result);
-            res.render("student/subject.ejs", { result, subjectName });
-        })
-        .catch(err => {
-            res.render("error.ejs", { err });
-        });
-});
-
-//========================================================================>>
-
-
-
-
-
 
 //========================================================================>>
 app.listen(port, () => {
@@ -431,12 +647,3 @@ app.listen(port, () => {
 })
 
 //========================================================================>>
-
-
-
-
-
-
-
-
-
