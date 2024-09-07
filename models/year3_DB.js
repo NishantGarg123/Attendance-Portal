@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const year32024 = mongoose.createConnection('mongodb://127.0.0.1:27017/year32024');
+const year32024 = mongoose.createConnection("mongodb+srv://vikashmishra8371:raXxlY7Qxp9RITrb@cluster0.ouwkxt4.mongodb.net/year32024?retryWrites=true&w=majority&appName=Cluster0");
 
 const studentPresentSchema =new Schema({
 
