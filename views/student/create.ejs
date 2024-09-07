@@ -1,38 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create new account</title>
-</head>
+<% layout("/layouts/boilerplate.ejs") %>
 <body>
     <h2>Create new account</h2>
-    <hr>
-    <form method="post" action="/attendance/create">
+<br>
+<div class="row">
+    <form method="post" action="/attendance/create" class="needs-validation" novalidate>
 
-        <label for="name"> Name</label>
-        <input type="text" placeholder="enter the  name" name="name"><br><br>
-
-        <label for="email">email</label>
-        <input type="email" placeholder="enter the email" name="email"><br><br>
-
-        <label for="pass">password</label>
-        <input type="password" placeholder="enter the password" name="pass"><br><br>
-
-
-        <label for="cpass">confirm password</label>
-        <input type="password" placeholder="enter the confirm password" name="cpass"><br><br>
-
-        <label for="year">Current year</label>
-        <input type="text" placeholder="enter the current year" name="year"><br><br>
-
-        <label for="dob">Date of birth</label>
-        <input type="date" placeholder="enter your date of birth" name="dob"><br><br>
-
-        <label for="collegeid">college id pass</label>
-        <input type="password" placeholder="college id password" name="collegeid"><br><br>
-        <button>create</button>
+        <div class="col-8">
+            <div class="mb-3">
+                <label for="name"> Name</label>
+                <input type="text" placeholder="enter the  name" name="Student[name]" class="form-control" required>
+                <div class="invalid-feedback">please enter your Name</div>
+            </div>
+            <div class="mb-3">
+                <label for="email">email</label>
+               <input type="email" placeholder="enter the email" name="Student[email]" class="form-control" required>
+               <div class="invalid-feedback">please enter valid email</div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="pass">password</label>
+                    <input type="password" placeholder="enter the password" name="Student[password]" class="form-control" required>
+                    <div class="invalid-feedback">please enter strong password </div>
+                 </div>
+                <div class="mb-3 col-md-6">
+                    <label for="cpass">confirm password</label>
+                    <input type="password" placeholder="enter the confirm password" name="Student[cpass]" class="form-control" required>    
+                    <div class="invalid-feedback">please enter currect confirm password</div>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="year">Current year</label>
+                <input type="text" placeholder="enter the current year" name="Student[year]" class="form-control" required>
+                <div class="invalid-feedback">please enter the your year of study</div>
+            </div>
+            <div class="mb-3">
+                <label for="dob">Date of birth</label>
+                <input type="date" placeholder="enter your date of birth" name="Student[dob]" class="form-control" required>
+                <div class="invalid-feedback">date of birth is required</div>
+            </div>
+            <div class="mb-4">
+                <label for="collegeid">college id pass</label>
+                <input type="password" placeholder="college id password" name="Student[collegeid]" class="form-control" required>
+                <div class="invalid-feedback">please enter the valid college id</div>
+            </div>       
+        </div>
+        <button class="btn btn-dark">create</button>
     </form>
+</div>
+    <br><br>
     
 </body>
-</html>

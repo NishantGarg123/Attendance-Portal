@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your attendance</title>
-    <style>
-        table{
-
-            border: 2px solid black;
-        }
-        tr td
-        {
-            border: 2px solid black;
-        }
-    </style>
-</head>
+<% layout("/layouts/boilerplate.ejs") %>
 <body>
-    <h1>attendance of <%= subjectName %></h1>
+    <h1>Attendance of <%= subjectName %></h1>
     <hr>
         <h4>Total lecture = <%= result.length %></h4>
         <% let i=0; %>
@@ -27,33 +11,53 @@
         <% } %>
         <h4>Attempt lecture = <%= i  %></h4>
         <h4>Percentage of attendance = <%= (i/(result.length))*100  %> %</h4>
-        <hr>    
+        <hr>   
+<!-- ======================================================================================================================>>> --> 
+<!-- if not present -->
         <h2>
             <% if(result.length == 0){ %>
-                <h2>No attendance found</h2>
+                
+                <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+                    <h2>No attendance found</h2>
+                  </div>
                 <% } %>
         </h2>
+
+<!-- ======================================================================================================================>>> -->
+
+
+<!-- ======================================================================================================================>>> -->
+ <!-- if attendance present -->
         <% if(result.length !=0){ %>
-            <table>
+            <table class="table table-dark ">
                 <tr>
                     <th>Date</th>
                     <th>Present</th>
+                    <th>marked by</th>
                 </tr>
             <% for(res of result){ %>
-                <tr>
-                    <% let date =(res.date)  %>
-                    <td><%= date  %></td>    
-                        <% if(res.present == true){ %>
-                        <td><input type="checkbox" checked></td>
+                <tr class="table-info">
+                    <% for(teacher of teacherResult) {%>
+                        <% if((teacher._id)==(res.marked_by)){ %> 
+                            <% if(res.present == true){ %>
+                                <% let date =(res.date)  %>
+                                <td class="table-info"><%= date  %></td>   
+                                <td class="table-info"><input type="checkbox" checked></td>
+                                <td class="table-info"><%= teacher.name %></td>
+                            <% } %>
+                            <% if(res.present == false){ %>
+                                <% let date =(res.date)  %>
+                                <td class="table-danger"><%= date  %></td>   
+                                <td class="table-danger"><input type="checkbox"></td>
+                                <td class="table-danger"><%= teacher.name %></td>
+                            <% } %>
+                            
                         <% } %>
-                        <% if(res.present == false){ %>
-                        <td><input type="checkbox"></td>
-                        <% } %>
+                    <% } %>
                 </tr>
             <% } %>
         <% } %>
         </table>
-    
+<!-- ======================================================================================================================>>> -->  
     
 </body>
-</html>

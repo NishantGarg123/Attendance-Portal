@@ -1,33 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome <%= result.name %></title>
-    <style>
-        select , button{
-            margin: 10px 30%;
-            width: 250px;
-
-        }
-    </style>
-</head>
-<body>
-    <h2>Welcome ! "<%= result.name %> "with  email :- <i> <%= result.email %></i> </h2>
-    <hr>
+<% layout("/layouts/boilerplate.ejs") %>
+    <body>
+        <h2>Welcome ! <%= result.name %> </h2>
+        <h2>email :- <i> <%= result.email %></i></h2><br>
+        
+        <h3>Now you can mark the attendance of any year of any subject :-</h3><br>
+        
+        <form method="post" action="/attendance/<%= result._id %>" class=" col-8">
+            <label for="year">Select year-</label>
+            <select name="year" id="year" class="form-select mt-3" aria-label="Default select example">
+                <option >Select year</option>
+                <option value="1">first year</option>
+                <option value="2">second year</option>
+                <option value="3">third  year</option>
+                <option value="4">fourth year</option>
+            </select><br>
+            <button class="btn btn-dark">submit</button>
+        </form>
+    </body>
     
-    <h3>Now you can mark the attendance of any year of any subject :-</h3>
-    
-    <form method="post" action="/attendance/<%= result._id %>">
-        <select name="year" id="year">
-            <option value="1">first year</option>
-            <option value="2">second year</option>
-            <option value="3">third  year</option>
-            <option value="4">fourth year</option>
-        </select><br>
-        <button>submit</button>
-    </form>
-
-    
-</body>
-</html>

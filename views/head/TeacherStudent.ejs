@@ -1,0 +1,24 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <h2>Welcome  <%= result.name %></h2>
+    <hr>
+    <h2 class="offset-2">Now you can find out all the students or teachers information</h2>
+    
+    <div class="col-8 offset-2  mt-4 mb-3">
+        <hr>
+        <form method="post" action="/attendance/head/studentsInfo" >
+            <h4>Select the year to find all student</h4>
+            <select name="year" id="" class="form-select mt-3" aria-label="Default select example">
+                <option value="">Select year</option>
+                <option value="1">First year</option>
+                <option value="2">Second year</option>
+                <option value="3">Third year</option>
+                <option value="4">Fourth year</option>
+            </select><br>   
+            <button class="btn btn-dark">find student</button>
+        </form>
+        <hr>
+        <h4>Some the Advance options</h4>
+        <a href="/attendance/head/teachersInfo"><button class="btn btn-dark mt-3">find all teachers</button></a>
+        <a href="/attendance/head/passwordSetting"><button class="btn btn-dark mt-3">Password Setting</button></a>
+    </div>

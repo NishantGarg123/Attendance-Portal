@@ -1,47 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("/layouts/boilerplate.ejs") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students </title>
-    <style>
-        table {
-            border: 2px solid black;
-        }
+    <body>
+        <h2>Mark attendance of <%= subjectname %>
+        </h2>
+        <hr>
+        <h2>List of Students-</h2>
+        <!-- ========================================================================================>>>     -->
+        <!-- attendance not found -->
+        <% if(result.length==0) {%>
+            <H1>No student found</H1>
+            <% } %>
+                <!-- ========================================================================================>>>     -->
 
-        table tr td,
-        th {
-            border: 2px solid black;
-            margin: auto;
-            padding: 20px 20px;
-        }
-    </style>
-</head>
+                <!-- ========================================================================================>>>     -->
+                <!-- attendance found -->
 
-<body>
-    <h2>Mark attendance of <%= subjectname %>
-    </h2>
-    <h2>List of Students</h2>
-    <hr>
+                <% if(result.length>=1 ){ %>
+                    <table class="table table-striped">
+                    <tr>
+                        <th>Present</th>
+                        <th>Name</th>
+                    </tr>
+                 
+                            <form action="/attendance/<%= year %>/<%= id %>/<%= subjectname %>" method="post">
+                                <% result.forEach(function(student) { %>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="student" value="<%= student._id %>">
+                                        </td>
+                                        <td>
+                                            <%= student.name %><br>
+                                        </td>
+                                    </tr>
+                                        <% }); %>
+                                            <br>
+                                    <button class="btn btn-dark" type="submit">Mark Attendance</button>
+                            </form>
+                    
+                    </table>
+                    <% } %>
 
-    <button onclick="mark()">mark all</button>
-
-
-    <% if(result.length==0) {%>
-        <H1>No student found</H1>
-        <% } %>
-
-                    <% if(result.length>=1 ){ %>
-                        <form action="/markattendance/<%= id %>/<%= subjectname %>/<%= year %>" method="post">
-                            <% result.forEach(function(student) { %>
-                                <input type="checkbox" name="student" value="<%= student._id %>">
-                                <%= student.name %><br>
-                                    <% }); %>
-                                        <br>
-                                        <button type="submit">Mark Attendance</button>
-                        </form>
-                        <% } %>
-</body>
-
-</html>
+                        <!-- ========================================================================================>>>     -->
+    </body>

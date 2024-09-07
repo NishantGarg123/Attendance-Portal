@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta _id="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        button{
-            display: flex;
-            margin:10px 30%;
-            border: 2px solid black;
-        }
-        button a{
-
-            color: black;
-            text-decoration: none;
-        }
-    </style>
-</head>
+<% layout("/layouts/boilerplate.ejs") %>
 <body>
     <h2>Welcome ! <b><%= result.name %></b></h2>
     <h3>email - <%= result.email %></h3>
@@ -24,18 +6,33 @@
     <% if(result.year ==1){ %>
         <!-- // Enggmaths1 Physics Electricals Softskills1 Pps Ai Enggmaths2 Chemistry Electronics Mechanical EmergingTech -->
         <h3>Find your subjects attendance -</h3>
-        <button><a href="/attendance/<%= result._id %>/Enggmaths1">Engg Mathmatics-1</a></button>
-        <button><a href="/attendance/<%= result._id %>/Physics">Physics</a></button>
-        <button><a href="/attendance/<%= result._id %>/Electricals">Electricals</a></button>
-        <button><a href="/attendance/<%= result._id %>/Pps">Programing for problem solving</a></button>
-        <button><a href="/attendance/<%= result._id %>/Softskills1">Soft skills -1</a></button>
-        <button><a href="/attendance/<%= result._id %>/Enggmaths2">Engg Mathmatics-2</a></button>
-        <button><a href="/attendance/<%= result._id %>/Chemistry">Chemistry</a></button>
-        <button><a href="/attendance/<%= result._id %>/Mechanical">Mechanical</a></button>
-        <button><a href="/attendance/<%= result._id %>/Electronics">Electronics</a></button>
-        <button><a href="/attendance/<%= result._id %>/Softskills2">Soft skills -2</a></button>
-        <button><a href="/attendance/<%= result._id %>/Ai">Artificial Inteligence</a></button>
-        <button><a href="/attendance/<%= result._id %>/EmergingTech">EmergingTechnology</a></button>
+            
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Enggmaths1">Engg Mathmatics-1</a></button >    
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Physics">Physics</a></button >
+            </div>
+                
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Electricals">Electricals</a></button >
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Pps">Programing for problem solving</a></button >
+            </div>
+                <div class="row">
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Softskills1">Soft skills -1</a></button >
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Enggmaths2">Engg Mathmatics-2</a></button >
+                </div>
+                <div class="row">
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Chemistry">Chemistry</a></button >
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Mechanical">Mechanical</a></button >
+                </div>
+                <div class="row">
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Electronics">Electronics</a></button >
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Softskills2">Soft skills -2</a></button >
+                </div>
+                <div class="row">
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Ai">Artificial Inteligence</a></button >
+                    <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/EmergingTech">EmergingTechnology</a></button>
+                </div>
+        
     <% } %>
     <!-- // Enggmaths4 Uhv Coa Dstl Ds Css Ese Tc Toc Mp Os Python -->
 
@@ -43,48 +40,82 @@
     <% if(result.year ==2){ %>
 
         <h3>Find your subjects attendance -</h3>
-        <button><a href="/attendance/<%= result._id %>/Enggmaths4">Engg Mathmatics-4</a></button>
-        <button><a href="/attendance/<%= result._id %>/Uhv">UnderStanding human value</a></button>
-        <button><a href="/attendance/<%= result._id %>/Coa">Computer Organization and architecture</a></button>
-        <button><a href="/attendance/<%= result._id %>/Dstl">Dstl</a></button>
-        <button><a href="/attendance/<%= result._id %>/Ds">data structure</a></button>
-        <button><a href="/attendance/<%= result._id %>/Css">Css</a></button>
-        <button><a href="/attendance/<%= result._id %>/Ese">Ese</a></button>
-        <button><a href="/attendance/<%= result._id %>/Tc">Technical communication</a></button>
-        <button><a href="/attendance/<%= result._id %>/Toc">Toc</a></button>
-        <button><a href="/attendance/<%= result._id %>/Mp">Mp</a></button>
-        <button><a href="/attendance/<%= result._id %>/Os">Os</a></button>
-        <button><a href="/attendance/<%= result._id %>/Python">Python</a></button>
+        <div class="row">
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Enggmaths4">Engg Mathmatics-4</a></button>
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Uhv">UnderStanding human value</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Coa">Computer Organization and architecture</a></button>
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Dstl">Dstl</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Ds">data structure</a></button>
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Css">Css</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Ese">Ese</a></button>
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Tc">Technical communication</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Toc">Toc</a></button>
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Mp">Mp</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Os">Os</a></button>
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Python">Python</a></button>
+            </div>
+        </div>
     <% } %>
 
     <!-- // Dbms Cd Daa Wd Hci Constitution Cn Wt Uhb TraditionalCulture Se Dip  -->
     <% if(result.year ==3){ %>
 
         <h3>Find your subjects attendance -</h3>
-        <button><a href="/attendance/<%= result._id %>/Dbms">Dbms</a></button>
-        <button><a href="/attendance/<%= result._id %>/Cd">Cd</a></button>
-        <button><a href="/attendance/<%= result._id %>/Daa">Daa</a></button>
-        <button><a href="/attendance/<%= result._id %>/Wd">Wd</a></button>
-        <button><a href="/attendance/<%= result._id %>/Hci">Hci</a></button>
-        <button><a href="/attendance/<%= result._id %>/Constitution">Constitution</a></button>
-        <button><a href="/attendance/<%= result._id %>/Cn">Cn</a></button>
-        <button><a href="/attendance/<%= result._id %>/Wt">Wt</a></button>
-        <button><a href="/attendance/<%= result._id %>/Uhb">Uhv</a></button>
-        <button><a href="/attendance/<%= result._id %>/TraditionalCulture">TraditionalCulture</a></button>
-        <button><a href="/attendance/<%= result._id %>/Se">Se</a></button>
-        <button><a href="/attendance/<%= result._id %>/Dip">Dip</a></button>
+        <div class="row">
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Dbms">Dbms</a></button>
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Cd">Cd</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Daa">Daa</a></button>
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Wd">Wd</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Hci">Hci</a></button>
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Constitution">Constitution</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Cn">Cn</a></button>
+                <button class="mb-3 ms-3btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Wt">Wt</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-3btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Uhb">Uhv</a></button>
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/TraditionalCulture">TraditionalCulture</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Se">Se</a></button>
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Dip">Dip</a></button>
+            </div>
+        </div>
     <% } %>
     <% if(result.year ==4){ %>
 
         <h3>Find your subjects attendance -</h3>
-        <button><a href="/attendance/<%= result._id %>/Ml">Machine learning</a></button>
-        <button><a href="/attendance/<%= result._id %>/Distribution">Distribution system</a></button>
-        <button><a href="/attendance/<%= result._id %>/CloudComputing">Cloud computing</a></button>
-        <button><a href="/attendance/<%= result._id %>/Rd">Rural developement</a></button>
-
-        <button><a href="/attendance/<%= result._id %>/Qm">Quality Management</a></button>
-        <button><a href="/attendance/<%= result._id %>/DataWare">Data Ware housing</a></button>
+        <div class="row">
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Ml">Machine learning</a></button>
+                <button class="mb-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Distribution">Distribution system</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/CloudComputing">Cloud computing</a></button>
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Rd">Rural developement</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/Qm">Quality Management</a></button>
+                <button class="mb-3 ms-3 btn  btn-dark col-md-6"><a href="/attendance/<%= result._id %>/DataWare">Data Ware housing</a></button>
+            </div>
+        </div>
     <% } %>
     
 </body>
-</html>
