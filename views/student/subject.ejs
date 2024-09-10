@@ -41,13 +41,23 @@
                         <% if((teacher._id)==(res.marked_by)){ %> 
                             <% if(res.present == true){ %>
                                 <% let date =(res.date)  %>
-                                <td class="table-info"><%= date  %></td>   
+                                <td class="table-info">
+                                    <%= date.toString().split(" ")[1]  %>
+                                    <%= date.toString().split(" ")[2]  %>
+                                    <%= date.toString().split(" ")[3]  %>
+                                    (<%= date.toString().split(" ")[4]  %>)
+                                </td>   
                                 <td class="table-info"><input type="checkbox" checked></td>
                                 <td class="table-info"><%= teacher.name %></td>
                             <% } %>
                             <% if(res.present == false){ %>
                                 <% let date =(res.date)  %>
-                                <td class="table-danger"><%= date  %></td>   
+                                <td class="table-danger">
+                                    <%= date.toString().split(" ")[1]  %>
+                                    <%= date.toString().split(" ")[2]  %>
+                                    <%= date.toString().split(" ")[3]  %>
+                                    (<%= date.toString().split(" ")[4]  %>)
+                                </td>   
                                 <td class="table-danger"><input type="checkbox"></td>
                                 <td class="table-danger"><%= teacher.name %></td>
                             <% } %>
