@@ -43,14 +43,23 @@ router.get("/attendance/login", (req, res) => {
 
 //login and redirect to presenttion route
 router.post("/attendance/login", wrapAsync(async(req, res , next) => {
-    let { email, pass } = req.body;
-    const result = await Student.findOne({ email: email })
-    if (result.password != pass) {
-       next(new ExpressError(405 , "Invalid Credettials"));
+    try{
+        let { email, pass } = req.body;
+        const result = await Student.findOne({ email: email })
+        if (!result || (result.password != pass)) {
+        //    next(new ExpressError(405 , "Invalid Credettials"));
+            req.flash("error" , "Invalid Credettials");
+            res.redirect("/attendance/login");  
+        }
+        else {
+            res.render("student/student.ejs", { result });
+        }                    
     }
-    else {
-        res.render("student/student.ejs", { result });
-    }                    
+    catch(err){
+        req.flash("success" , err.message);
+        res.redirect("/attendance/login");  
+    }
+    
 }));
 
 //handle the route of subjects (this route will display the attendance of subjects of student).
@@ -70,16 +79,20 @@ router.get("/attendance/create", (req, res) => {
 
 //push data of new account
 router.post("/attendance/create",validateStudent,wrapAsync(async(req, res , next) => {
-
+try{
     let student = req.body.Student;
     // console.log(student);
     const admin = await Admin.find({});
     const studPass = admin[0].studentPass;
     if (student.password != student.cpass) {
-        next(new ExpressError(405 , "passwords and confirm password are not same"));
+        // next(new ExpressError(405 , "passwords and confirm password are not same"));
+        req.flash("error","passwords and confirm password are not same");
+        res.redirect("/attendance/create");
     }
     if (student.collegeid != studPass) {
-        next(new ExpressError(405 , "Invalid Credentialities"));
+        // next(new ExpressError(405 , "Invalid Credentialities"));
+        req.flash("error","College Id password is Invalid");
+        res.redirect("/attendance/create");
     }
     else {                  
         delete student.cpass;
@@ -91,6 +104,11 @@ router.post("/attendance/create",validateStudent,wrapAsync(async(req, res , next
         await new_student.save()
         res.redirect("/attendance/login");
     }
+}catch(err){
+    req.flash("success" , err.message);
+    res.redirect("/attendance/login");  
+}
+    
 }));
 
 

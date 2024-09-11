@@ -56,23 +56,35 @@ router.get("/attendance/head", (req, res) => {
 });
 
 router.post("/attendance/head", wrapAsync(async (req, res, next) => {
-
-    let { email, password } = req.body;
-    const result = await Admin.findOne({ email: email })
-    if (password != result.adminPass) {
-        next(new ExpressError(405, "Invalid Credentials"));
-    }
-    else {
-        //welcome to the our head showing all information
-        res.render("head/TeacherStudent.ejs", { result });
+    try{
+        let { email, password } = req.body;
+        const result = await Admin.findOne({ email: email })
+        if (password != result.adminPass) {
+            // next(new ExpressError(405, "Invalid Credentials"));
+            req.flash("success" , "Invalid Credentials");
+            res.redirect("/attendance/head");  
+        }
+        else {
+            //welcome to the our head showing all information
+            res.render("head/TeacherStudent.ejs", { result });
+        }
+    }catch(err){
+        req.flash("success" , err.message);
+        res.redirect("/attendance/head");  
     }
 }));
 
 router.post("/attendance/head/studentsInfo", wrapAsync(async (req, res, next) => {
+    try{
+        let { year } = req.body;
+        let result = await Student.find({ year: year })
+         res.render("head/AllYearStudent.ejs", { result, year });
+    }catch(err){
+        req.flash("success" , err.message);
+        res.redirect("/attendance/head/studentsInfo");  
+    }
 
-    let { year } = req.body;
-    let result = await Student.find({ year: year })
-    res.render("head/AllYearStudent.ejs", { result, year });
+    
 }));
 
 router.get("/attendance/head/teachersInfo", wrapAsync(async (req, res, next) => {
@@ -90,18 +102,27 @@ router.get("/attendance/head/studentsInfo/:id/edit", wrapAsync(async (req, res, 
 }));
 
 router.put("/attendance/head/studentsInfo/:id/edit", validateStudent, wrapAsync(async (req, res, next) => {
-
-    let { id } = req.params;
-    let student = req.body.Student;
-    if (student.password != student.cpass) {
-        next(new ExpressError(405, "password and confirm password are not match"));
+    try{
+        let { id } = req.params;
+        let student = req.body.Student;
+        if (student.password != student.cpass) {
+            // next(new ExpressError(405, "password and confirm password are not match"));
+            req.flash("success" ,"password and confirm password are not match"); 
+            res.redirect(`/attendance/head/studentsInfo/${id}/edit`); 
+        }
+        else {
+            delete student.cpass;
+            delete student.collegeid;
+            const result = await Student.findByIdAndUpdate(id, { ...student });
+            req.flash("success" ,"Stduents Details Updated Successfully"); 
+            res.redirect(`/attendance/head/studentsInfo/${id}/edit`); 
+        }
+    }catch(err){
+        req.flash("success" ,err.message); 
+        res.redirect(`/attendance/head/studentsInfo/${id}/edit`); 
     }
-    else {
-        delete student.cpass;
-        delete student.collegeid;
-        const result = await Student.findByIdAndUpdate(id, { ...student });
-        res.render("head/StudentEdit.ejs", { result });
-    }
+    
+    
 }));
 
 //delete the student
@@ -121,18 +142,26 @@ router.get("/attendance/head/teachersInfo/:id/edit", wrapAsync(async (req, res, 
 }));
 
 router.put("/attendance/head/teachersInfo/:id/edit", validateTeacher, wrapAsync(async (req, res, next) => {
-
-    let { id } = req.params;
-    let teacher = req.body.Teacher;
-    if (teacher.password != teacher.cpassword) {
-        next(new ExpressError(405, "password and confirm password are not match"));
+    try{
+        let { id } = req.params;
+        let teacher = req.body.Teacher;
+        if (teacher.password != teacher.cpassword) {
+            // next(new ExpressError(405, "password and confirm password are not match"));
+            req.flash("error" , "password and confirm password are not match"); 
+            res.redirect("/attendance/head/teachersInfo"); 
+        }
+        else {
+            delete teacher.cpassword;
+            delete teacher.collegeid;
+            await Teacher.findByIdAndUpdate(id, { ...teacher });
+            req.flash("success" ,"Teacher Details Updated Successfully"); 
+            res.redirect("/attendance/head/teachersInfo"); 
+        }
+    }catch(err){
+        req.flash("error" ,err.message); 
+        res.redirect("/attendance/head/teachersInfo"); 
     }
-    else {
-        delete teacher.cpassword;
-        delete teacher.collegeid;
-        await Teacher.findByIdAndUpdate(id, { ...teacher });
-        res.redirect(`/attendance/head/teachersInfo/${id}/edit`);
-    }
+    
 }));
 
 // Delete the Teacher from DB
@@ -140,7 +169,8 @@ router.get("/attendance/head/teachersInfo/:id/delete", wrapAsync(async (req, res
 
     let { id } = req.params;
     await Teacher.findOneAndDelete(id);
-    res.send("Teacher Deleted from the DB");
+    req.flash("success" ,"Teacher Deleted Successfully"); 
+    res.redirect("/attendance/head/teachersInfo"); 
 }));
 
 // Password Setting route
@@ -153,10 +183,17 @@ router.get("/attendance/head/passwordSetting", wrapAsync(async (req, res, next) 
 
 router.put("/attendance/head/passwordSetting", validateAdmin, wrapAsync(async (req, res, next) => {
 
-    let adminData = req.body.Admin;
-    // console.log(adminData);
-    await Admin.updateMany({ ...adminData });
-    res.redirect("/attendance/head/passwordSetting");
+    try{
+        let adminData = req.body.Admin;
+        // console.log(adminData);
+        await Admin.updateMany({ ...adminData });
+        req.flash("success" ,"Password Updated Successfully");
+        res.redirect("/attendance/head/passwordSetting");
+    }catch(err){
+        req.flash("error" ,err.message);
+        res.redirect("/attendance/head/passwordSetting");
+    }
+    
 }));
 //========================================================================================================>>
 

@@ -40,39 +40,56 @@ router.get("/attendance/Tcreate", (req, res) => {
 });
 
 router.post("/attendance/Tcreate", validateTeacher, wrapAsync(async (req, res, next) => {
-
-    let teacher = req.body.Teacher;
-    const admin = await Admin.find({});
-    const teachPass = admin[0].teacherPass;
-    if (teacher.password != teacher.cpassword) {
-        next(new ExpressError(405, "password and confirm password are not match"));
+    try{
+        let teacher = req.body.Teacher;
+        const admin = await Admin.find({});
+        const teachPass = admin[0].teacherPass;
+        if (teacher.password != teacher.cpassword) {
+            // next(new ExpressError(405, "password and confirm password are not match"));
+            req.flash("error","passwords and confirm password are not same");
+            res.redirect("/attendance/Tcreate");
+        }
+        else if (teacher.collegeid != teachPass) {
+            // next(new ExpressError(405, "Invalid Credentialities"));
+             req.flash("error","College Id password is Invalid");
+            res.redirect("/attendance/Tcreate");
+        }
+        else {
+            delete teacher.cpassword;
+            delete teacher.collegeid;
+            const new_teacher = new Teacher({
+                ...teacher,
+                created_at: new Date()
+            });
+    
+            await new_teacher.save();
+            res.redirect("/attendance/login");
+        }
+    }catch(err){
+        req.flash("success" , err.message);
+        res.redirect("/attendance/Tlogin");  
     }
-    else if (teacher.collegeid != teachPass) {
-        next(new ExpressError(405, "Invalid Credentialities"));
-    }
-    else {
-        delete teacher.cpassword;
-        delete teacher.collegeid;
-        const new_teacher = new Teacher({
-            ...teacher,
-            created_at: new Date()
-        });
-
-        await new_teacher.save();
-        res.redirect("/attendance/login");
-    }
+    
 }));
 
 //login route display the years in option
 router.post("/attendance/Tlogin", wrapAsync(async (req, res, next) => {
-    let { email, pass } = req.body;
-    const result = await Teacher.findOne({ email: email });
-    if (result.password != pass) {
-        next(new ExpressError(405, "Invalid Credentials"));
+    try{
+        let { email, pass } = req.body;
+        const result = await Teacher.findOne({ email: email });
+        if (!result || (result.password != pass)) {
+            //    next(new ExpressError(405 , "Invalid Credettials"));
+                req.flash("error" , "Invalid Credettials");
+                res.redirect("/attendance/login");  
+            }
+        else {
+            res.render("teacher/teacher.ejs", { result });
+        }
+    }catch(err){
+        req.flash("success" , err.message);
+        res.redirect("/attendance/login");  
     }
-    else {
-        res.render("teacher/teacher.ejs", { result });
-    }
+    
 }));
 
 //subject displaying route according to the year
@@ -96,6 +113,7 @@ router.get("/attendance/:year/:id/:subjectname", wrapAsync(async (req, res, next
     }
     else {
         const result = await Student.find({ year: year });
+        // console.log(result);
         res.render("teacher/mark.ejs", { subjectname, result, id, year });
     }
 }));
@@ -104,24 +122,42 @@ router.get("/attendance/:year/:id/:subjectname", wrapAsync(async (req, res, next
 router.post("/attendance/:year/:id/:subjectname", wrapAsync(async (req, res, next) => {
 
     let { id, subjectname, year } = req.params;
-    const { student } = req.body;                   // 'student' input field ka name hai
+    let { student } = req.body;                   // 'student' input field ka name hai
     const subject_name = eval(subjectname);
-
     const result = await Student.find({ year: year });
-
-    const attendance = result.map(el => {
-        let current_id = (el.id).toString();
-        return {
-            id: el._id,
-            date: new Date(),
-            present: student.includes(current_id),
-            marked_by: id
-        };
-    });
-
-    await subject_name.insertMany(
-        attendance
-    )
+    if(student === undefined)
+    {
+        student=[{_id:0}];
+        const attendance = result.map(el => {
+            let current_id = (el._id).toString();
+            return {
+                id: el._id,
+                date: new Date(),
+                present: student.includes(current_id),
+                marked_by: id
+            };
+        });
+        await subject_name.insertMany(
+            attendance
+        )
+    }
+    
+    else
+    {  
+        const attendance = result.map(el => {
+            let current_id = (el._id).toString();
+            return {
+                id: el._id,
+                date: new Date(),
+                present: student.includes(current_id),
+                marked_by: id
+            };
+        });
+    
+        await subject_name.insertMany(
+            attendance
+        )
+    }
     res.send("Attendance marked successfully");
 }));
 //========================================================================>>
