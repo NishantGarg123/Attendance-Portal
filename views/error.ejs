@@ -1,6 +1,9 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<body>
-    <h2>Error</h2>
-    <p><%=err %></p>
-    
-</body>
+
+<div>
+    <div class="alert alert-danger col-7 offset-2" role="alert">
+        <h2>ERROR</h2>
+        <h4><%= err %></h4>
+      </div>
+
+</div>
