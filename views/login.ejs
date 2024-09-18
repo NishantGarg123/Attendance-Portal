@@ -1,48 +1,25 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <body>
-    <h2>Login as a Student</h2>
     <div class="row">
         <form  method=POST action="/attendance/login" class="needs-validation" novalidate>
-    <div class="col-8">
+    <div class="col-8 offset-1 mt-3">
+        <h2>Student</h2>
         <div class="mb-3">
-            <label for="email">Email</label>
+            <label class="form-label" for="email">Email</label>
             <input type="email" placeholder="enter your email" name="email" class="form-control" required>    
             <div class="invalid-feedback">please entre the valid email</div>
 
             <div class="mb-3">
-                <label for="pass">Password</label>
+                <label class="form-label" for="pass">Password</label>
                 <input type="password" name="pass" placeholder="enter your password" class="form-control " required>    
                 <div class="invalid-feedback">please enter the valid password</div>
             </div>        
         </div>
+        <button class="btn btn-dark">submit</button>
+        <button class="btn btn-outline-dark ms-4"><a href="/attendance/Tlogin">I am a teacher</a></button>
     </div>
-            <button class="btn btn-dark">submit</button>
+           
         </form>
     </div>
-    <br><br>
-    <button class="btn btn-dark"><a href="/attendance/create" class="create-acc">create a new account</a></button>
-    
-<hr>
-    <h2>Login as a Teacher</h2>
-    <div class="row">
-        <form  method=POST action="/attendance/Tlogin" class="needs-validation" novalidate>
-            <div class="col-8">
-                <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" placeholder="enter your email" name="email" class="form-control" required>    
-                    <div class="invalid-feedback">please fill the valid email</div>
-                </div>
-                <div class="mb-3">
-                    <label for="pass">Password</label>
-                    <input type="password" name="pass" placeholder="enter your password" class="form-control" required>    
-                    <div class="invalid-feedback">please enter the valid password</div>
-                </div>
-            </div>
-            <button class="btn btn-dark">submit</button>
-        </form>
-    </div>
-    <br><br>
-    <button class="btn btn-dark"><a href="/attendance/Tcreate" class="create-acc">create a new account</a></button>
-
-    
+    <br><br>        
 </body>
