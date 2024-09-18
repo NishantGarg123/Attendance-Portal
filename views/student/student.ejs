@@ -2,6 +2,18 @@
 <body>
     <h2>Welcome ! <b><%= result.name %></b></h2>
     <h3>email - <%= result.email %></h3>
+    <h2>Your Overall percentage = 
+        <% { %>
+            <% let totalLecture = att.length %>
+            <% let attemptLecture=0 %>
+            <% for(currAtt of att) {%>
+                <% if (currAtt.present) { %>
+                    <% attemptLecture++ %>
+                <% } %>
+            <% } %>
+            <%= ((attemptLecture/totalLecture)*100).toFixed(2) %>
+        <% } %>
+        %</h2>
     <hr>
     <% if(result.year ==1){ %>
         <!-- // Enggmaths1 Physics Electricals Softskills1 Pps Ai Enggmaths2 Chemistry Electronics Mechanical EmergingTech -->

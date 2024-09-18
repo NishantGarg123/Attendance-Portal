@@ -28,6 +28,11 @@ const {Enggmaths1 ,Physics, Electricals, Softskills1, Pps, Ai, Enggmaths2, Chemi
 const {Enggmaths4, Uhv, Coa, Dstl, Ds, Css, Ese, Tc, Toc, Mp, Os, Python} = require("../models/year2_DB.js");
 const {Dbms, Cd, Daa, Wd, Hci, Constitution, Cn, Wt, Uhb, TraditionalCulture, Se, Dip } = require("../models/year3_DB.js");
 const {Ml, Distribution, CloudComputing, Rd, Qm, DataWare} = require("../models/year4_DB.js");
+
+const firstYear = ["Enggmaths1" ,"Physics", "Electricals"," Softskills1"," Pps"," Ai", "Enggmaths2", "Chemistry", "Electronics", "Mechanical", "EmergingTech" ,"Softskills2"];
+const secondYear = ["Enggmaths4", "Uhv", "Coa"," Dstl"," Ds", "Css", "Ese", "Tc", "Toc", "Mp", "Os", "Python"];
+const thirdYear = ["Dbms", "Cd", "Daa", "Wd", "Hci", "Constitution", "Cn", "Wt", "Uhb", "TraditionalCulture", "Se"," Dip"];
+const fourthYear = ["Ml", "Distribution", "CloudComputing"," Rd"," Qm"," DataWare"];
 //========================================================================>>
  
 //========================================================================================================>>
@@ -52,7 +57,37 @@ router.post("/attendance/login", wrapAsync(async(req, res , next) => {
             res.redirect("/attendance/login");  
         }
         else {
-            res.render("student/student.ejs", { result });
+            const year = result.year;
+            let att=[];
+            if(year == 1){
+                for(sub of firstYear){
+                    const currSub = eval(sub);
+                    let res = await currSub.find({id:result._id});
+                   att= att.concat(res);
+                }
+            }
+            if(year == 2){
+                for(sub of secondYear){
+                    const currSub = eval(sub);
+                    let res = await currSub.find({id:result._id});
+                   att= att.concat(res);
+                }
+            }
+            if(year == 3){
+                for(sub of thirdYear){
+                    const currSub = eval(sub);
+                    let res = await currSub.find({id:result._id});
+                   att= att.concat(res);
+                }
+            }
+            if(year == 4){
+                for(sub of fourthYear){
+                    const currSub = eval(sub);
+                    let res = await currSub.find({id:result._id});
+                   att= att.concat(res);
+                }
+            }
+            res.render("student/student.ejs", { result ,att });
         }                    
     }
     catch(err){
