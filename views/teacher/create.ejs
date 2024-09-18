@@ -1,18 +1,16 @@
 <% layout("/layouts/boilerplate.ejs") %>
-
     <body>
-        <h2>Welcome You are going to create a faculty member account -</h2><br>
-
-        <div class="row">
+        <div class="row mt-3 mb-3 offset-2">
+            <h2>Teacher Account</h2><br>
             <div class="col-8 ">
                 <form method="post" action="/attendance/Tcreate" class="needs-validation" novalidate>
                     <div class="mb-3">
-                        <label for="name">Name :</label>
+                        <label class="form-label" for="name">Name </label>
                         <input type="text" placeholder="enter your name" name="Teacher[name]" class="form-control" required>
                         <div class="invalid-feedback">please enter your Name</div>
                     </div>
                     <div class="mb-3">
-                        <label for="email">email :</label>
+                        <label class="form-label" for="email">email </label>
                         <input type="email" placeholder="enter your email" name="Teacher[email]" class="form-control" required>
                         <div class="invalid-feedback">please enter the valid email</div>
                     </div>
@@ -20,13 +18,13 @@
                     <div class="row">
 
                         <div class="mb-3 col-md-6">
-                            <label for="password">Password :</label>
+                            <label class="form-label" for="password">Password </label>
                             <input type="password" placeholder="enter your password" name="Teacher[password]" class="form-control" required>
                             <div class="invalid-feedback">please enter your password</div>
                         </div>
     
                         <div class="mb-3 col-md-6">
-                            <label for="password">Confirm Password :</label>
+                            <label class="form-label" for="password">Confirm Password </label>
                             <input type="password" placeholder="enter your Confirm password" name="Teacher[cpassword]"
                                 class="form-control" required>
                             <div class="invalid-feedback">please enter the Confirm password</div>
@@ -34,26 +32,27 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="dob">DOB :</label>
+                        <label class="form-label" for="dob">DOB </label>
                         <input type="date" placeholder="enter your date of birth" name="Teacher[dob]" class="form-control" required>
                         <div class="invalid-feedback">please enter your date of birth</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="dob">College id :</label>
+                        <label class="form-label" for="dob">College id </label>
                         <input type="password" placeholder="enter your college id" name="Teacher[collegeid]"
                             class="form-control" required>
                         <div class="invalid-feedback">please enter valid college id</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="workingExperience">Experience :</label><br>
+                        <label class="form-label" for="workingExperience">Experience </label><br>
                         <textarea name="Teacher[workingExperience]" rows="5" cols="30" class="form-control" required></textarea>
                         <div class="">please enter the your workingExperience</div><br>
                     </div>
+                    <button class="btn btn-dark">submit</button><br><br>
             </div>
         </div>
 
-        <button class="btn btn-dark">submit</button><br><br>
+       
         </form>
     </body>

@@ -7,6 +7,9 @@ body{
    
 }
 
+.form-control{
+    border: .09rem solid !important;
+}
 
 .Services 
 {
@@ -42,8 +45,19 @@ body{
     }
 .navbar-nav{
 
-    margin-left: 15rem;
+    margin-left: 2rem;
 }
+@media (max-width: 768px) { /* Adjust the max-width as needed */
+    .navbar-collapse {
+        margin-top: 2rem;
+        padding-left: 4rem;
+      background-color: white;
+      /* position: absolute; */
+      /* width: 100%; */
+      /* z-index: 1; */
+    }
+  }
+
 /* ====================================================================================>> */
 
 

@@ -33,6 +33,11 @@ const {Ml, Distribution, CloudComputing, Rd, Qm, DataWare} = require("../models/
 //========================================================================================================>>
 //ALL ROUTE OF TEACHER SIDE
 
+//Login route
+router.get("/attendance/Tlogin", (req, res) => {
+    res.render("teacher/login.ejs");
+});
+
 //create route
 router.get("/attendance/Tcreate", (req, res) => {
     //render the form to teacher
@@ -80,14 +85,14 @@ router.post("/attendance/Tlogin", wrapAsync(async (req, res, next) => {
         if (!result || (result.password != pass)) {
             //    next(new ExpressError(405 , "Invalid Credettials"));
                 req.flash("error" , "Invalid Credettials");
-                res.redirect("/attendance/login");  
+                res.redirect("/attendance/Tlogin");  
             }
         else {
             res.render("teacher/teacher.ejs", { result });
         }
     }catch(err){
         req.flash("success" , err.message);
-        res.redirect("/attendance/login");  
+        res.redirect("/attendance/Tlogin");  
     }
     
 }));

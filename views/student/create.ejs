@@ -1,51 +1,51 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <body>
-    <h2>Create new account</h2>
-<br>
-<div class="row">
+<div class="row mt-3 mb-3 offset-2">
+    <h2>Student Account</h2>
     <form method="post" action="/attendance/create" class="needs-validation" novalidate>
 
         <div class="col-8">
             <div class="mb-3">
-                <label for="name"> Name</label>
+                <label class="form-label" for="name"> Name</label>
                 <input type="text" placeholder="enter the  name" name="Student[name]" class="form-control" required>
                 <div class="invalid-feedback">please enter your Name</div>
             </div>
             <div class="mb-3">
-                <label for="email">email</label>
+                <label class="form-label" for="email">email</label>
                <input type="email" placeholder="enter the email" name="Student[email]" class="form-control" required>
                <div class="invalid-feedback">please enter valid email</div>
             </div>
             <div class="row">
                 <div class="mb-3 col-md-6">
-                    <label for="pass">password</label>
+                    <label class="form-label"  for="pass">password</label>
                     <input type="password" placeholder="enter the password" name="Student[password]" class="form-control" required>
                     <div class="invalid-feedback">please enter strong password </div>
                  </div>
                 <div class="mb-3 col-md-6">
-                    <label for="cpass">confirm password</label>
+                    <label class="form-label" for="cpass">confirm password</label>
                     <input type="password" placeholder="enter the confirm password" name="Student[cpass]" class="form-control" required>    
                     <div class="invalid-feedback">please enter currect confirm password</div>
                 </div>
             </div>
             
             <div class="mb-3">
-                <label for="year">Current year</label>
+                <label class="form-label" for="year">Current year</label>
                 <input type="text" placeholder="enter the current year" name="Student[year]" class="form-control" required>
                 <div class="invalid-feedback">please enter the your year of study</div>
             </div>
             <div class="mb-3">
-                <label for="dob">Date of birth</label>
+                <label class="form-label" for="dob">Date of birth</label>
                 <input type="date" placeholder="enter your date of birth" name="Student[dob]" class="form-control" required>
                 <div class="invalid-feedback">date of birth is required</div>
             </div>
             <div class="mb-4">
-                <label for="collegeid">college id pass</label>
+                <label class="form-label" for="collegeid">college id pass</label>
                 <input type="password" placeholder="college id password" name="Student[collegeid]" class="form-control" required>
                 <div class="invalid-feedback">please enter the valid college id</div>
             </div>       
         </div>
         <button class="btn btn-dark">create</button>
+        <a class="btn btn-outline-dark  ms-4" href="/attendance/Tcreate" class="create-acc">I am aTeacher</a>
     </form>
 </div>
     <br><br>
