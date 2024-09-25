@@ -14,11 +14,16 @@
         <a class="nav-link" href="/attendance#contact">contact us</a>
         <a class="nav-link" href="/attendance#about">About us</a>
         <a class="nav-link" href="/attendance/head">Admin</a>
+        <a class="nav-link" href="/attendance/dashboard">Dashboard</a>
       </div>
       <div class="navbar-nav ms-auto ">
+        <% if(! currUser){ %>
         <a class="nav-link" href="/attendance/login">Login</a>
         <a class="nav-link" href="/attendance/create">Sign up</a>
+        <% } %>
+        <% if(currUser){ %>
         <a class="nav-link" href="/attendance/logout">Logout</a>
+        <% } %>
       </div>
     </div>
   </div>

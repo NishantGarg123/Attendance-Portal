@@ -10,6 +10,13 @@ const ExpressError = require("./utils/ExpressError.js");
 //session related
 const session = require("express-session");
 const flash = require('connect-flash');
+
+
+const { Student, Teacher , Admin } = require("./models/college.js");
+///passport related
+const passport = require('passport');
+const LocalStrategy = require('passport-local')
+
 //========================================================================>>
 //foe ejs-mate 
 const ejsMate = require("ejs-mate");
@@ -41,9 +48,21 @@ const sessionOption ={
 app.use(session(sessionOption));
 
 app.use(flash());
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use('student-local', new LocalStrategy(Student.authenticate()));
+passport.use('teacher-local', new LocalStrategy(Teacher.authenticate()));
+// passport.use('admin-local', new LocalStrategy(Admin.authenticate()));
+passport.serializeUser(Student.serializeUser());
+passport.deserializeUser(Student.deserializeUser());
+
+//creating the locals variable so that we can access in the ejs templates.
 app.use((req , res , next)=>{
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
     next();
 })
 

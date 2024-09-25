@@ -5,9 +5,11 @@ const ExpressError = require("../utils/ExpressError.js");
 const { Student, Teacher, Admin } = require("../models/college.js");
 const methodOverride = require('method-override');
 const { studentSchema } = require("../schema.js");
-
+const {isLoggedIn} = require('../middleware.js');
+const passport = require('passport');
 //========================================================================================================>>
 // All validations
+
 
 const validateStudent = (req, res, next) => {
     let { error } = studentSchema.validate(req.body);
@@ -46,59 +48,62 @@ router.get("/attendance/login", (req, res) => {
     res.render("login.ejs");
 });
 
-//login and redirect to presenttion route
-router.post("/attendance/login", wrapAsync(async(req, res , next) => {
-    try{
-        let { email, pass } = req.body;
-        const result = await Student.findOne({ email: email })
-        if (!result || (result.password != pass)) {
-        //    next(new ExpressError(405 , "Invalid Credettials"));
-            req.flash("error" , "Invalid Credettials");
-            res.redirect("/attendance/login");  
-        }
-        else {
-            const year = result.year;
+//login and redirect to presenttion route 
+router.post("/attendance/login", 
+    passport.authenticate('student-local',{failureRedirect:"/attendance/login" , failureFlash:true,}),async(req, res ) => {
+    req.flash("success" , `Welcome ${req.user.username}`);
+    res.redirect("/attendance/dashboard");
+});
+
+router.get("/attendance/dashboard" ,isLoggedIn , wrapAsync(async(req , res , next )=>{
+    
+    if(req.user.workingExperience)
+    {
+        console.log('vcjsh');
+        
+        const result = req.user;
+        res.render("teacher/teacher.ejs" , {result});
+
+    }
+    else{
+            const year =req.user.year;
             let att=[];
+            const id = (req.user._id).toString();
             if(year == 1){
                 for(sub of firstYear){
                     const currSub = eval(sub);
-                    let res = await currSub.find({id:result._id});
-                   att= att.concat(res);
+                    let res = await currSub.find({id:id});
+                att= att.concat(res);
                 }
             }
             if(year == 2){
                 for(sub of secondYear){
                     const currSub = eval(sub);
-                    let res = await currSub.find({id:result._id});
-                   att= att.concat(res);
+                    let res = await currSub.find({id:id});
+                att= att.concat(res);
                 }
             }
             if(year == 3){
                 for(sub of thirdYear){
                     const currSub = eval(sub);
-                    let res = await currSub.find({id:result._id});
-                   att= att.concat(res);
+                    let res = await currSub.find({id:id});
+                att= att.concat(res);
                 }
             }
             if(year == 4){
                 for(sub of fourthYear){
                     const currSub = eval(sub);
-                    let res = await currSub.find({id:result._id});
-                   att= att.concat(res);
+                    let res = await currSub.find({id:id});            
+                att= att.concat(res);
                 }
             }
+            const result = req.user;
             res.render("student/student.ejs", { result ,att });
-        }                    
     }
-    catch(err){
-        req.flash("success" , err.message);
-        res.redirect("/attendance/login");  
-    }
-    
 }));
 
 //handle the route of subjects (this route will display the attendance of subjects of student).
-router.get("/attendance/:id/:subjectName", wrapAsync(async(req, res , next) => {
+router.get("/attendance/:id/:subjectName",isLoggedIn, wrapAsync(async(req, res , next) => {
 
     let { id, subjectName } = req.params;
     const subject = eval(subjectName);
@@ -130,22 +135,40 @@ try{
         res.redirect("/attendance/create");
     }
     else {                  
+        const password = student.password;
         delete student.cpass;
         delete student.collegeid;
+        delete student.password;
         const new_student = new Student({
             ...student,
             created_at: new Date()
         });
-        await new_student.save()
-        res.redirect("/attendance/login");
+        const registeredStudent = await Student.register(new_student , password);
+        req.login(registeredStudent , (err)=>{
+            if(err){
+                return next(err);   
+            }
+            req.flash(`Welcome ${student.username}`);
+            res.redirect("/attendance/dashboard");
+        })
     }
 }catch(err){
     req.flash("success" , err.message);
     res.redirect("/attendance/login");  
 }
-    
+   
 }));
 
+
+router.get("/attendance/logout" , (req , res , next )=>{
+    req.logout((err)=>{
+        if(err){
+            return next(err);
+        }
+        req.flash("success" , "You are logged out");
+        res.redirect("/attendance");
+    })
+});
 
 //========================================================================================================>>
 

@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const college2024 = mongoose.createConnection("mongodb+srv://vikashmishra8371:raXxlY7Qxp9RITrb@cluster0.ouwkxt4.mongodb.net/college2024?retryWrites=true&w=majority&appName=Cluster0");
 
 //student Schema
 // name ,email,password,year,dob,created_at
 const studentSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        require: true,
-    },
     email: {
         type: String,
         require: true,
@@ -37,10 +34,6 @@ const studentSchema = new mongoose.Schema({
 //Teacher Schema
 // name,email,password,dob,created_at,workingExperience
 const TeacherSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        require: true,
-    },
     email: {
         type: String,
         require: true,
@@ -87,25 +80,33 @@ const AdminSchema =new mongoose.Schema({
     }
 });
 
+
+// const Admin = college2024.model("Admin", AdminSchema);
+// const AdminData = async()=>{
+
+//     const admin = new Admin({
+//         name:"nishant garg",
+//         email:"gargacsnishant@gmail.com",
+//         adminPass:"3",
+//         studentPass:"1",
+//         teacherPass:"2"
+//     });
+//     await admin.save();
+// }
+// AdminData();
+
 // Student , Teacher , Admin
+
+studentSchema.plugin(passportLocalMongoose);
+TeacherSchema.plugin(passportLocalMongoose);
+// AdminSchema.plugin(passportLocalMongoose);
+
 module.exports.Student = college2024.model("Student", studentSchema);
 module.exports.Teacher = college2024.model("Teacher", TeacherSchema);
 module.exports.Admin = college2024.model("Admin", AdminSchema);
 
 
 //========================================================================>>
-// const AdminData = async()=>{
-
-//     const admin = new Admin({
-//         name:"nishant garg",
-//         email:"gargacsnishant@gmail.com",
-//         adminPass:"9105060079",
-//         studentPass:"7088177858",
-//         teacherPass:"9758674359"
-//     });
-//     await admin.save();
-// }
-// AdminData();
 
 //========================================================================>>
 

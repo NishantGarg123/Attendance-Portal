@@ -35,9 +35,13 @@
                     <th>Present</th>
                     <th>marked by</th>
                 </tr>
+                <% let teacherLength = teacherResult.length %>
             <% for(res of result){ %>
+
                 <tr class="table-info">
                     <% for(teacher of teacherResult) {%>
+
+                        <% let i=0 %>
                         <% if((teacher._id)==(res.marked_by)){ %> 
                             <% if(res.present == true){ %>
                                 <% let date =(res.date)  %>
@@ -48,7 +52,7 @@
                                     (<%= date.toString().split(" ")[4]  %>)
                                 </td>   
                                 <td class="table-info"><input type="checkbox" checked></td>
-                                <td class="table-info"><%= teacher.name %></td>
+                                <td class="table-info"><%= teacher.username %></td>
                             <% } %>
                             <% if(res.present == false){ %>
                                 <% let date =(res.date)  %>
@@ -59,10 +63,40 @@
                                     (<%= date.toString().split(" ")[4]  %>)
                                 </td>   
                                 <td class="table-danger"><input type="checkbox"></td>
-                                <td class="table-danger"><%= teacher.name %></td>
+                                <td class="table-danger"><%= teacher.username %></td>
                             <% } %>
-                            
+                            <%  break; %>
                         <% } %>
+                        <% i++ %>
+
+                        <% if(i>=teacherLength){ %>
+                            <% if(res.present == true){ %>
+                                <% let date =(res.date)  %>
+                                <td class="table-info">
+                                    <%= date.toString().split(" ")[1]  %>
+                                    <%= date.toString().split(" ")[2]  %>
+                                    <%= date.toString().split(" ")[3]  %>
+                                    (<%= date.toString().split(" ")[4]  %>)
+                                </td>   
+                                <td class="table-info"><input type="checkbox" checked></td>
+                                <td class="table-info">leaved </td>
+                            <% } %>
+                            <% if(res.present == false){ %>
+                                <% let date =(res.date)  %>
+                                <td class="table-danger">
+                                    <%= date.toString().split(" ")[1]  %>
+                                    <%= date.toString().split(" ")[2]  %>
+                                    <%= date.toString().split(" ")[3]  %>
+                                    (<%= date.toString().split(" ")[4]  %>)
+                                </td>   
+                                <td class="table-danger"><input type="checkbox"></td>
+                                <td class="table-danger"> leaved </td>
+                            <% } %> 
+                        <% } %>
+
+
+                            
+
                     <% } %>
                 </tr>
             <% } %>

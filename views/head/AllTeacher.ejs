@@ -12,7 +12,6 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Password</th>
             <th>DOB</th>
             <th>Work-Experience</th>
             <th>Edit</th>
@@ -20,9 +19,8 @@
         </tr>
         <% for(teacher of allTeachers){ %>
             <tr>
-                <td><%= teacher.name %></td>
+                <td><%= teacher.username %></td>
                 <td><%= teacher.email %></td>
-                <td><%= teacher.password %></td>
                 <td><%= teacher.dob %></td>
                 <td><%= teacher.workingExperience %></td>
                 <td><a href="/attendance/head/teachersInfo/<%= teacher._id %>/edit"> <button class="btn btn-dark">Edit</button></a></td>

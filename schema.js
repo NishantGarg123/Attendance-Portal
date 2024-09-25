@@ -5,7 +5,7 @@ const Joi = require('joi');
 module.exports.studentSchema = Joi.object({
 
     Student:Joi.object({
-         name: Joi.string().required(),
+         username: Joi.string().required(),
          email:Joi.string().required(),
          password:Joi.string().required(),
          cpass:Joi.string().required(),
@@ -20,7 +20,7 @@ module.exports.teacherSchema = Joi.object({
 
     Teacher:Joi.object({
 
-        name:Joi.string().required(),
+        username:Joi.string().required(),
         email:Joi.string().required(),
         password:Joi.string().required(),
         cpassword:Joi.string().required(),

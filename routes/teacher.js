@@ -6,6 +6,8 @@ const { Student, Teacher, Admin } = require("../models/college.js");
 const methodOverride = require('method-override');
 const { teacherSchema } = require("../schema.js");
 
+const passport = require('passport');
+const {isLoggedIn} = require("../middleware.js");
 //========================================================================================================>>
 // All validations
 const validateTeacher = (req, res, next) => {
@@ -60,45 +62,43 @@ router.post("/attendance/Tcreate", validateTeacher, wrapAsync(async (req, res, n
             res.redirect("/attendance/Tcreate");
         }
         else {
+            const password = teacher.password;
             delete teacher.cpassword;
             delete teacher.collegeid;
+            delete teacher.password;
             const new_teacher = new Teacher({
                 ...teacher,
                 created_at: new Date()
             });
-    
-            await new_teacher.save();
-            res.redirect("/attendance/login");
+            const registeredTeacher = await Teacher.register(new_teacher , password);
+            
+            req.login(registeredTeacher , (err)=>{
+                if(err){
+                    return next(err);   
+                }
+                req.flash(`Welcome ${teacher.username}`);
+                const result = req.user;
+                res.render("teacher/teacher.js" , {result});
+            });
         }
     }catch(err){
-        req.flash("success" , err.message);
+        req.flash("error" , err.message);
         res.redirect("/attendance/Tlogin");  
     }
     
 }));
 
 //login route display the years in option
-router.post("/attendance/Tlogin", wrapAsync(async (req, res, next) => {
-    try{
-        let { email, pass } = req.body;
-        const result = await Teacher.findOne({ email: email });
-        if (!result || (result.password != pass)) {
-            //    next(new ExpressError(405 , "Invalid Credettials"));
-                req.flash("error" , "Invalid Credettials");
-                res.redirect("/attendance/Tlogin");  
-            }
-        else {
-            res.render("teacher/teacher.ejs", { result });
-        }
-    }catch(err){
-        req.flash("success" , err.message);
-        res.redirect("/attendance/Tlogin");  
-    }
-    
-}));
+router.post("/attendance/Tlogin", 
+    passport.authenticate('teacher-local',{failureRedirect:"/attendance/Tlogin" , failureFlash:true,}),async(req, res ) => {
+        // console.log(req.user);        
+        const result = req.user;
+        req.flash("success" , `Welcome ${req.user.username}`);
+        res.render("teacher/teacher.ejs" , {result});
+});
 
 //subject displaying route according to the year
-router.post("/attendance/:id", wrapAsync(async (req, res, next) => {
+router.post("/attendance/:id",wrapAsync(async (req, res, next) => {
     let { id } = req.params;
     let { year } = req.body;
     const result = await Teacher.findOne({ _id: id })
