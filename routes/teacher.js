@@ -78,7 +78,7 @@ router.post("/attendance/Tcreate", validateTeacher, wrapAsync(async (req, res, n
                 }
                 req.flash(`Welcome ${teacher.username}`);
                 const result = req.user;
-                res.render("teacher/teacher.js" , {result});
+                res.render("teacher/teacher.ejs" , {result});
             });
         }
     }catch(err){
