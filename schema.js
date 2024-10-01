@@ -11,6 +11,7 @@ module.exports.studentSchema = Joi.object({
          cpass:Joi.string().required(),
          collegeid:Joi.string().required(),
          year:Joi.number().required(),
+         branch:Joi.string().required(),
          dob:Joi.date().required(),
          created_at:Joi.date()
     }).required()

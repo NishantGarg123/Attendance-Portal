@@ -33,6 +33,18 @@
                 <input type="text" placeholder="enter the current year" name="Student[year]" class="form-control" required>
                 <div class="invalid-feedback">please enter the your year of study</div>
             </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="branch">Your Branch </label><br>
+                <select class="form-select form-control" aria-label="Default select example" name="Student[branch]">
+                        <option selected>-select brach-</option>
+                        <option value="cs">Computer science Engineering</option>
+                        <option value="ee">Electrical Engineering</option>
+                        <option value="ec">Electronics Engineering</option>
+                        <option value="me">Mechanical Engineering</option>
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label" for="dob">Date of birth</label>
                 <input type="date" placeholder="enter your date of birth" name="Student[dob]" class="form-control" required>

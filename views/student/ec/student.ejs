@@ -1,0 +1,150 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <h2>Welcome ! <b><%= result.username %></b></h2>
+    <h3>email - <%= result.email %></h3>
+    <h2>Your Overall percentage = 
+        <% { %>
+            <% let totalLecture = att.length %>
+            <% let attemptLecture=0 %>
+            <% for(currAtt of att) {%>
+                <% if (currAtt.present) { %>
+                    <% attemptLecture++ %>
+                <% } %>
+            <% } %>
+            <%= ((attemptLecture/totalLecture)*100).toFixed(2) %>
+        <% } %>
+        %</h2>
+    <hr>
+    <% if(result.year ==1){ %>
+        <!-- // Enggmaths1 Physics Electricals Softskills1 Pps Ai Enggmaths2 Chemistry Electronics Mechanical EmergingTech -->
+        <h3>Find your subjects attendance -</h3>
+            <div class="row offset-1 mt-3">
+                <div class="row ">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Enggmaths1">Engg Mathmatics-1</a></button >    
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Physics">Physics</a></button >
+                </div>
+                    
+                <div class="row">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Electricals">Electricals</a></button >
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Pps">Programing for problem solving</a></button >
+                </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Softskills1">Soft skills -1</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Enggmaths2">Engg Mathmatics-2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Chemistry">Chemistry</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Mechanical">Mechanical</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Electronics">Electronics</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Softskills2">Soft skills -2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/Ai">Artificial Inteligence</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/EmergingTech">EmergingTechnology</a></button>
+                    </div>
+            
+        
+            </div>
+            <% } %>    
+            
+            <!-- ECMaterialScience, ECUniversalHumanValue ,ECElectronicDevices ,
+             ECDigitalSystemDesign ,ECNetworkAnalysisAndSynthesis ,ECPythonProgramming
+               ,ECMiniProjectI ,ECMathsIV , ECtechnicalCommunication
+                ,ECCommunicationEngineering ,ECAnalogCircuits ,ECSignalSystem ,ECComputerSystemSecurity -->
+
+    <% if(result.year ==2){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECMaterialScience">ECMaterialScience</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECUniversalHumanValue">ECUniversalHumanValue</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECElectronicDevices">ECElectronicDevices</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECDigitalSystemDesign">ECDigitalSystemDesign</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECNetworkAnalysisAndSynthesis">ECNetworkAnalysisAndSynthesis</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECPythonProgramming">ECPythonProgramming</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECMiniProjectI">ECMiniProjectI</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECMathsIV">ECMathsIV</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECtechnicalCommunication">ECtechnicalCommunication</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECCommunicationEngineering">ECCommunicationEngineering</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECAnalogCircuits">ECAnalogCircuits</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECSignalSystem">ECSignalSystem</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECComputerSystemSecurity">ECComputerSystemSecurity</a></button>
+    
+            </div>
+        </div>
+    <% } %>
+
+    <!-- ECIntegratedCircuit ,ECMicroprocessorAndMicrocontroller , ECDigitalSignalProcessing , ECVlsiTechnology , ECElectronicsSwitching , ECConstitutionOfIndia , ECMiniProjectII , ECDigitalCommunication ,ECControlSystem, ECAntennaAndWavePRopagation, ECDataCommunicationNetwork ,ECUnderstandingHumanBeing ,ECIndianTradition -->
+
+    <% if(result.year ==3){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row  offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECIntegratedCircuit">ECIntegratedCircuit</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECMicroprocessorAndMicrocontroller">ECMicroprocessorAndMicrocontroller</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECDigitalSignalProcessing">ECDigitalSignalProcessing</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECVlsiTechnology">ECVlsiTechnology</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECElectronicsSwitching">ECElectronicsSwitching</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECConstitutionOfIndia">ECConstitutionOfIndia</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECMiniProjectII">ECMiniProjectII</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECDigitalCommunication">ECDigitalCommunication</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECControlSystem">ECControlSystem</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECAntennaAndWavePRopagation">ECAntennaAndWavePRopagation</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECDataCommunicationNetwork">ECDataCommunicationNetwork</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECUnderstandingHumanBeing">ECUnderstandingHumanBeing</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECIndianTradition">ECIndianTradition</a></button>
+            </div>
+        </div>
+    <% } %>
+
+
+    <!-- ECVlsiDesign ,ECRenewableEnergyResources ,ECWirelessAndMobileComminication ,ECRuralDevelopement ,ECProject  ,ECInternshipAssesment -->
+
+    <% if(result.year ==4){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECVlsiDesign">ECVlsiDesign</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECRenewableEnergyResources">ECRenewableEnergyResources</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECWirelessAndMobileComminication">ECWirelessAndMobileComminication</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECRuralDevelopement">ECRuralDevelopement</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECProject">ECProject</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= result._id %>/ECInternshipAssesment">ECInternshipAssesment</a></button>
+            </div>
+        </div>
+    <% } %>
+    
+</body>

@@ -1,0 +1,124 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <h1>Welcome <%= result.username %></h1>
+    <h2>Select subject </h2>
+    <hr>
+    
+    <% if(year ==1){ %>
+        <!-- // Enggmaths1 Physics Electricals Softskills1 Pps Ai Enggmaths2 Chemistry Electronics Mechanical EmergingTech -->
+        <h3>Find your subjects attendance -</h3>
+            <div class="row offset-1 mt-3">
+                <div class="row ">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Enggmaths1">Engg Mathmatics-1</a></button >    
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Physics">Physics</a></button >
+                </div>
+                    
+                <div class="row">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Electricals">Electricals</a></button >
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Pps">Programing for problem solving</a></button >
+                </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Softskills1">Soft skills -1</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Enggmaths2">Engg Mathmatics-2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Chemistry">Chemistry</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Mechanical">Mechanical</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Electronics">Electronics</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Softskills2">Soft skills -2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Ai">Artificial Inteligence</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EmergingTech">EmergingTechnology</a></button>
+                    </div>
+            
+        
+            </div>
+            <% } %>    
+    <!-- // Enggmaths4 Uhv Coa Dstl Ds Css Ese Tc Toc Mp Os Python -->
+
+
+    <% if(year ==2){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSEnggmaths4">Engg Mathmatics-4</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSUhv">UnderStanding human value</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSCoa">Computer Organization and architecture</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSDstl">Dstl</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSDs">data structure</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSCss">Css</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSEse">Ese</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSTc">Technical communication</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSToc">Toc</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSMp">Mp</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSOs">Os</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSPython">Python</a></button>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- // Dbms Cd Daa Wd Hci Constitution Cn Wt Uhb TraditionalCulture Se Dip  -->
+    <% if(year ==3){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row  offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSDbms">Dbms</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSCd">Cd</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSDaa">Daa</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSWd">Wd</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSHci">Hci</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSConstitution">Constitution</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSCn">Cn</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSWt">Wt</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSUhb">Uhv</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSTraditionalCulture">TraditionalCulture</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSSe">Se</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSDip">Dip</a></button>
+            </div>
+        </div>
+    <% } %>
+    <% if(year ==4){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSMl">Machine learning</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSDistribution">Distribution system</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSCloudComputing">Cloud computing</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSRd">Rural developement</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSQm">Quality Management</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/CSDataWare">Data Ware housing</a></button>
+            </div>
+        </div>
+    <% } %>
+    
+</body>

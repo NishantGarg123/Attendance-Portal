@@ -25,16 +25,62 @@ const validateStudent = (req, res, next) => {
 //========================================================================================================>>
 
 //========================================================================>>
-// Require all the Models
-const {Enggmaths1 ,Physics, Electricals, Softskills1, Pps, Ai, Enggmaths2, Chemistry, Electronics, Mechanical, EmergingTech ,Softskills2} = require("../models/year1_DB.js")
-const {Enggmaths4, Uhv, Coa, Dstl, Ds, Css, Ese, Tc, Toc, Mp, Os, Python} = require("../models/year2_DB.js");
-const {Dbms, Cd, Daa, Wd, Hci, Constitution, Cn, Wt, Uhb, TraditionalCulture, Se, Dip } = require("../models/year3_DB.js");
-const {Ml, Distribution, CloudComputing, Rd, Qm, DataWare} = require("../models/year4_DB.js");
+// Require all the Models cs
+const {Enggmaths1 ,Physics, Electricals, Softskills1, Pps, Ai, Enggmaths2, Chemistry, Electronics, Mechanical, EmergingTech ,Softskills2} = require("../models/cs/year1_DB.js")
 
-const firstYear = ["Enggmaths1" ,"Physics", "Electricals"," Softskills1"," Pps"," Ai", "Enggmaths2", "Chemistry", "Electronics", "Mechanical", "EmergingTech" ,"Softskills2"];
-const secondYear = ["Enggmaths4", "Uhv", "Coa"," Dstl"," Ds", "Css", "Ese", "Tc", "Toc", "Mp", "Os", "Python"];
-const thirdYear = ["Dbms", "Cd", "Daa", "Wd", "Hci", "Constitution", "Cn", "Wt", "Uhb", "TraditionalCulture", "Se"," Dip"];
-const fourthYear = ["Ml", "Distribution", "CloudComputing"," Rd"," Qm"," DataWare"];
+const {CSEnggmaths4, CSUhv, CSCoa, CSDstl, CSDs, CSCss, CSEse, CSTc, CSToc, CSMp, CSOs, CSPython} = require("../models/cs/year2_DB.js");
+const {CSDbms, CSCd, CSDaa, CSWd, CSHci, CSConstitution, CSCn, CSWt, CSUhb, CSTraditionalCulture, CSSe, CSDip } = require("../models/cs/year3_DB.js");
+const {CSMl, CSDistribution, CSCloudComputing, CSRd, CSQm, CSDataWare} = require("../models/cs/year4_DB.js");
+
+const cs = [
+    ["Enggmaths1" ,"Physics", "Electricals"," Softskills1"," Pps"," Ai", "Enggmaths2", "Chemistry", "Electronics", "Mechanical", "EmergingTech" ,"Softskills2"],
+    
+    ["CSEnggmaths4", "CSUhv", "CSCoa"," CSDstl"," CSDs", "CSCss", "CSEse", "CSTc", "CSToc", "CSMp", "CSOs", "CSPython"],
+    ["CSDbms", "CSCd", "CSDaa", "CSWd", "CSHci", "CSConstitution", "CSCn", "CSWt", "CSUhb", "CSTraditionalCulture", "CSSe"," CSDip"],
+    ["CSMl", "CSDistribution", "CSCloudComputing"," CSRd"," CSQm"," CSDataWare"]];
+
+// Require all the Models of ee
+const {EEAnalogDevicesElectronicCircuits,EETechnicalCommunication,EEElectromagneticFieldTheory,EEElectricalMeasurementsInstrumentation,EEBasicSignalsSystems,EECyberSecurity
+    ,EEMathsIV,EEUniversalHumanValues,EEDigitalElectronics,EEElectricalMachinesI,EENetworksAnalysisSynthesis,EEEnvironmentalScience} = require("../models/ee/year2_DB.js");
+const {  EEPowerSystemI, EEControlSystem , EEElectricalMachinesII , EESensorsandTransducers , EENeuralNetworksFuzzySystem , EEConstitutionofIndia
+    ,EEPowerSystemII , EEMicroprocessorandMicrocontroller , EEPowerElectronics  , EEDigitalControlSystem , EEOpenElectiveI , EEEssenceofIndianTraditionalKnowledge} =require("../models/ee/year3_DB.js");
+const { EEHighVoltageEngineering , EEElectricdrives , EEOpenElectiveII , EEOpenElectiveIII , EEOpenElectiveIV} = require("../models/ee/year4_DB.js");
+
+const ee = [
+   ["Enggmaths1" ,"Physics", "Electricals"," Softskills1"," Pps"," Ai", "Enggmaths2", "Chemistry", "Electronics", "Mechanical", "EmergingTech" ,"Softskills2"],
+   ["EEAnalogDevicesElectronicCircuits","EETechnicalCommunication","EEElectromagneticFieldTheory","EEElectricalMeasurementsInstrumentation","EEBasicSignalsSystems","EECyberSecurity" ,"EEMathsIV","EEUniversalHumanValues","EEDigitalElectronics","EEElectricalMachinesI","EENetworksAnalysisSynthesis","EEEnvironmentalScience"],
+   ["EEPowerSystemI"," EEControlSystem" ," EEElectricalMachinesII" ," EESensorsandTransducers" ," EENeuralNetworksFuzzySystem" , "EEConstitutionofIndia"
+       ,"EEPowerSystemII" , "EEMicroprocessorandMicrocontroller" ," EEPowerElectronics"  ," EEDigitalControlSystem" , "EEOpenElectiveI" , "EEEssenceofIndianTraditionalKnowledge"],
+   [ "EEHighVoltageEngineering" , "EEElectricdrives" , "EEOpenElectiveII ", "EEOpenElectiveIII ", "EEOpenElectiveIV"]
+];
+
+// Require all the Models of ec
+
+const {ECMaterialScience, ECUniversalHumanValue ,ECElectronicDevices ,ECDigitalSystemDesign ,ECNetworkAnalysisAndSynthesis ,ECPythonProgramming  ,ECMiniProjectI ,ECMathsIV , ECtechnicalCommunication ,ECCommunicationEngineering ,ECAnalogCircuits ,ECSignalSystem ,ECComputerSystemSecurity} =require("../models/ec/year2_DB.js");
+const {ECIntegratedCircuit ,ECMicroprocessorAndMicrocontroller , ECDigitalSignalProcessing , ECVlsiTechnology , ECElectronicsSwitching , ECConstitutionOfIndia , ECMiniProjectII , ECDigitalCommunication ,ECControlSystem, ECAntennaAndWavePRopagation, ECDataCommunicationNetwork ,ECUnderstandingHumanBeing ,ECIndianTradition} = require("../models/ec/year3_DB.js");
+const {ECVlsiDesign ,ECRenewableEnergyResources ,ECWirelessAndMobileComminication ,ECRuralDevelopement ,ECProject  ,ECInternshipAssesment} =require("../models/ec/year4_DB.js");
+
+const ec= [
+    ["Enggmaths1" ,"Physics", "Electricals"," Softskills1"," Pps"," Ai", "Enggmaths2", "Chemistry", "Electronics", "Mechanical", "EmergingTech" ,"Softskills2"],
+    ["ECMaterialScience", "ECUniversalHumanValue" ,"ECElectronicDevices" ,"ECDigitalSystemDesign ","ECNetworkAnalysisAndSynthesis" ,"ECPythonProgramming"  ,"ECMiniProjectI" ,"ECMathsIV" , "ECtechnicalCommunication" ,"ECCommunicationEngineering ","ECAnalogCircuits" ,"ECSignalSystem" ,"ECComputerSystemSecurity"],
+    ["ECIntegratedCircuit" ,"ECMicroprocessorAndMicrocontroller" ," ECDigitalSignalProcessing" ," ECVlsiTechnology" ," ECElectronicsSwitching" ," ECConstitutionOfIndia" ," ECMiniProjectII" ," ECDigitalCommunication" ,"ECControlSystem", "ECAntennaAndWavePRopagation", "ECDataCommunicationNetwork" ,"ECUnderstandingHumanBeing" ,"ECIndianTradition"],
+    ["ECVlsiDesign" ,"ECRenewableEnergyResources" ,"ECWirelessAndMobileComminication" ,"ECRuralDevelopement ","ECProject"  ,"ECInternshipAssesment"]
+];
+
+// Require all the Models of me
+
+const {MEElectronicsEngineering ,MEUniversalHumanValue, METhermodynamics, MEFluidMechanics, MEMaterialsEngineering, MEMiniProjectI, MEComputerSystemSecurity,  MEMathsIV,  METechnicalCommunication,  MEAppliedThermodynamics,  MEEnggMechanics, MEManufacturingProcesses, MEPythonProgramming } = require("../models/me/year2_DB.js");
+const { MEHeatAndMassTransfer, MEStrengthOfMaterial, MEIndustrialEngg, MEComputerIntegratedManufacturing, MEAdvanceWelding, MEMiniProjectII, MEConstitutionOfIndia,   MERefrigerationAndAirConditioning, MEMachineDesign, METheoryOfMachine, MENonDestructiveTesting, MEUnderstandingHumanBeing, MEIndianTraditional } = require("../models/me/year3_DB.js");
+const {MEProject , MEInternshipAssesment } = require("../models/me/year4_DB.js");
+
+const me = [
+    ["Enggmaths1" ,"Physics", "Electricals"," Softskills1"," Pps"," Ai", "Enggmaths2", "Chemistry", "Electronics", "Mechanical", "EmergingTech" ,"Softskills2"],
+    ["MEElectronicsEngineering"," MEUniversalHumanValue" , " METhermodynamics" , " MEFluidMechanics" , " MEMaterialsEngineering" ," MEMiniProjectI" ," MEComputerSystemSecurity", " MEMathsIV" , " METechnicalCommunication" , "MEAppliedThermodynamics" ,  "MEEnggMechanics" , " MEManufacturingProcesses" , " MEPythonProgramming" ],
+    ["MEHeatAndMassTransfer", " MEStrengthOfMaterial" ," MEIndustrialEngg" ," MEComputerIntegratedManufacturing" , " MEAdvanceWelding" , "MEMiniProjectII","  MEConstitutionOfIndia","   MERefrigerationAndAirConditioning"," MEMachineDesign " , "METheoryOfMachine"," MENonDestructiveTesting"," MEUnderstandingHumanBeing" ," MEIndianTraditional" ],
+    [ "MEProject" ," MEInternshipAssesment"]
+];
+
+
 //========================================================================>>
  
 //========================================================================================================>>
@@ -55,8 +101,7 @@ router.post("/attendance/login",
     res.redirect("/attendance/dashboard");
 });
 
-router.get("/attendance/dashboard" ,isLoggedIn , wrapAsync(async(req , res , next )=>{
-    
+router.get("/attendance/dashboard" ,isLoggedIn , wrapAsync(async(req , res , next )=>{    
     if(req.user.workingExperience)
     {
         console.log('vcjsh');
@@ -69,36 +114,49 @@ router.get("/attendance/dashboard" ,isLoggedIn , wrapAsync(async(req , res , nex
             const year =req.user.year;
             let att=[];
             const id = (req.user._id).toString();
+
+            let branch = req.user.branch;
+            if(branch == 'cs'){
+                branch = cs;
+            }else if(branch == 'ee'){
+                branch = ee;
+            }else if(branch == 'ec'){
+                branch = ec;
+            }else if(branch == 'me'){
+                branch = me;
+            }
+
             if(year == 1){
-                for(sub of firstYear){
+                for(sub of (branch)[0] ){
                     const currSub = eval(sub);
                     let res = await currSub.find({id:id});
                 att= att.concat(res);
                 }
             }
             if(year == 2){
-                for(sub of secondYear){
+                for(sub of (branch)[1]){
                     const currSub = eval(sub);
                     let res = await currSub.find({id:id});
                 att= att.concat(res);
                 }
             }
             if(year == 3){
-                for(sub of thirdYear){
+                for(sub of (branch)[2]){
                     const currSub = eval(sub);
                     let res = await currSub.find({id:id});
                 att= att.concat(res);
                 }
             }
             if(year == 4){
-                for(sub of fourthYear){
+                for(sub of (branch)[3] ){
                     const currSub = eval(sub);
                     let res = await currSub.find({id:id});            
                 att= att.concat(res);
                 }
-            }
+            }          
             const result = req.user;
-            res.render("student/student.ejs", { result ,att });
+            const Stud_branch = req.user.branch;
+            res.render(`student/${Stud_branch}/student.ejs`, { result ,att });
     }
 }));
 

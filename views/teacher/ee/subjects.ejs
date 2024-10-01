@@ -1,0 +1,134 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <h1>Welcome <%= result.username %></h1>
+    <h2>Select subject </h2>
+    <hr>
+    
+    
+    <% if(year ==1){ %>
+        <!-- // Enggmaths1 Physics Electricals Softskills1 Pps Ai Enggmaths2 Chemistry Electronics Mechanical EmergingTech -->
+        <h3>Find your subjects attendance -</h3>
+            <div class="row offset-1 mt-3">
+                <div class="row ">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Enggmaths1">Engg Mathmatics-1</a></button >    
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Physics">Physics</a></button >
+                </div>
+                    
+                <div class="row">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Electricals">Electricals</a></button >
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Pps">Programing for problem solving</a></button >
+                </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Softskills1">Soft skills -1</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Enggmaths2">Engg Mathmatics-2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Chemistry">Chemistry</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Mechanical">Mechanical</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Electronics">Electronics</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Softskills2">Soft skills -2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Ai">Artificial Inteligence</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EmergingTech">EmergingTechnology</a></button>
+                    </div>
+            
+        
+            </div>
+            <% } %>    
+<!--             
+    const {AnalogDevicesElectronicCircuits,TechnicalCommunication,ElectromagneticFieldTheory,ElectricalMeasurementsInstrumentation,BasicSignalsSystems,CyberSecurity
+        ,MathsIV,UniversalHumanValues,DigitalElectronics,ElectricalMachinesI,NetworksAnalysisSynthesis,EnvironmentalScience} = require("../models/ee/year2_DB.js");
+    -->
+
+    <% if(year ==2){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEAnalogDevicesElectronicCircuits">AnalogDevicesElectronicCircuits</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EETechnicalCommunication">TechnicalCommunication</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEElectromagneticFieldTheory">ElectromagneticFieldTheory</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEElectricalMeasurementsInstrumentation">ElectricalMeasurementsInstrumentation</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEBasicSignalsSystems">BasicSignalsSystems</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EECyberSecurity">CyberSecurity</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEMathsIV">MathsIV</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEUniversalHumanValues">UniversalHumanValues</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEDigitalElectronics">DigitalElectronics</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEElectricalMachinesI">ElectricalMachinesI</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EENetworksAnalysisSynthesis">NetworksAnalysisSynthesis</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEEnvironmentalScience">EnvironmentalScience</a></button>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- const {  PowerSystemI, ControlSystem , ElectricalMachinesII , SensorsandTransducers , NeuralNetworksFuzzySystem , ConstitutionofIndia
+        ,PowerSystemII , MicroprocessorandMicrocontroller , PowerElectronics  , DigitalControlSystem , OpenElectiveI , EssenceofIndianTraditionalKnowledge} =require("../models/ee/year3_DB.js");
+         -->
+    
+    
+    <% if(year ==3){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row  offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEPowerSystemI">PowerSystemI</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEControlSystem">ControlSystem</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEElectricalMachinesII">ElectricalMachinesII</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EESensorsandTransducers">SensorsandTransducers</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EENeuralNetworksFuzzySystem">NeuralNetworksFuzzySystem</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEConstitutionofIndia">ConstitutionofIndia</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEPowerSystemII">PowerSystemII</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEMicroprocessorandMicrocontroller">MicroprocessorandMicrocontroller</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEPowerElectronics">PowerElectronics</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEDigitalControlSystem">DigitalControlSystem</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEOpenElectiveI">OpenElectiveI</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEEssenceofIndianTraditionalKnowledge">EssenceofIndianTraditionalKnowledge</a></button>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- const { HighVoltageEngineering , Electricdrives , OpenElectiveII , OpenElectiveIII , OpenElectiveIV} = require("../models/ee/year4_DB.js"); -->
+
+    <% if(year ==4){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEHighVoltageEngineering">HighVoltageEngineering</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEDistribution">Distribution system</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEElectricdrives">Electricdrives</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEOpenElectiveII">OpenElectiveII</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEOpenElectiveIII">OpenElectiveIII</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EEOpenElectiveIV">OpenElectiveIV</a></button>
+            </div>
+        </div>
+    <% } %>
+    
+</body>

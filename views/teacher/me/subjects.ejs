@@ -1,0 +1,129 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <h1>Welcome <%= result.username %></h1>
+    <h2>Select subject </h2>
+    <hr>
+    
+    <hr>
+    <% if(year ==1){ %>
+        <!-- // Enggmaths1 Physics Electricals Softskills1 Pps Ai Enggmaths2 Chemistry Electronics Mechanical EmergingTech -->
+        <h3>Find your subjects attendance -</h3>
+            <div class="row offset-1 mt-3">
+                <div class="row ">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Enggmaths1">Engg Mathmatics-1</a></button >    
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Physics">Physics</a></button >
+                </div>
+                    
+                <div class="row">
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Electricals">Electricals</a></button >
+                    <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Pps">Programing for problem solving</a></button >
+                </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Softskills1">Soft skills -1</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Enggmaths2">Engg Mathmatics-2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Chemistry">Chemistry</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Mechanical">Mechanical</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Electronics">Electronics</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Softskills2">Soft skills -2</a></button >
+                    </div>
+                    <div class="row">
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/Ai">Artificial Inteligence</a></button >
+                        <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/EmergingTech">EmergingTechnology</a></button>
+                    </div>
+            
+        
+            </div>
+            <% } %>    
+            <!-- MEElectronicsEngineering ,MEUniversalHumanValue, METhermodynamics, MEFluidMechanics, MEMaterialsEngineering, MEMiniProjectI, MEComputerSystemSecurity,
+               MEMathsIV,  METechnicalCommunication,  MEAppliedThermodynamics,  MEEnggMechanics, MEManufacturingProcesses, MEPythonProgramming  -->
+
+
+    <% if(year ==2){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEElectronicsEngineering">MEElectronicsEngineering</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEUniversalHumanValue">MEUniversalHumanValue</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/METhermodynamics">METhermodynamics</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEFluidMechanics">MEFluidMechanics</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEMaterialsEngineering">MEMaterialsEngineering</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEMiniProjectI">MEMiniProjectI</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEComputerSystemSecurity">MEComputerSystemSecurity</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEMathsIV">MEMathsIV</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/METechnicalCommunication">METechnicalCommunication</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEAppliedThermodynamics">MEAppliedThermodynamics</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEEnggMechanics">MEEnggMechanics</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEManufacturingProcesses">MEManufacturingProcesses</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEPythonProgramming">MEPythonProgramming</a></button>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- MEHeatAndMassTransfer, MEStrengthOfMaterial, MEIndustrialEngg, MEComputerIntegratedManufacturing, MEAdvanceWelding, MEMiniProjectII, MEConstitutionOfIndia, 
+       MERefrigerationAndAirConditioning, MEMachineDesign, METheoryOfMachine, MENonDestructiveTesting, MEUnderstandingHumanBeing, MEIndianTraditional -->
+
+    <% if(year ==3){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row  offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEHeatAndMassTransfer">MEHeatAndMassTransfer</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEStrengthOfMaterial">MEStrengthOfMaterial</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEIndustrialEngg">MEIndustrialEngg</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEComputerIntegratedManufacturing">MEComputerIntegratedManufacturing</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEAdvanceWelding">MEAdvanceWelding</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEMiniProjectII">MEMiniProjectII</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEConstitutionOfIndia">MEConstitutionOfIndia</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MERefrigerationAndAirConditioning">MERefrigerationAndAirConditioning</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEMachineDesign">MEMachineDesign</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/METheoryOfMachine">METheoryOfMachine</a></button>    
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MENonDestructiveTesting">MENonDestructiveTesting</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEUnderstandingHumanBeing">MEUnderstandingHumanBeing</a></button>
+            </div>
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEIndianTraditional">MEIndianTraditional</a></button>
+            </div>
+        </div>
+    <% } %>
+
+    <!-- MEProject , MEInternshipAssesment -->
+
+    <% if(year ==4){ %>
+
+        <h3>Find your subjects attendance -</h3>
+        <div class="row offset-1 mt-3">
+            <div class="row">
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEProject">MEProject</a></button>
+                <button class="mb-3 ms-1 btn  btn-dark col-md-5"><a href="/attendance/<%= year %>/<%= result._id %>/<%= branch %>/MEInternshipAssesment">MEInternshipAssesment</a></button>
+            </div>
+        </div>
+    <% } %>
+    
+</body>
