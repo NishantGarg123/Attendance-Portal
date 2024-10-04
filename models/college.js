@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
-// const college2024 = mongoose.createConnection("mongodb+srv://vikashmishra8371:raXxlY7Qxp9RITrb@cluster0.ouwkxt4.mongodb.net/college2024?retryWrites=true&w=majority&appName=Cluster0");
-const college2024 = mongoose.createConnection("mongodb+srv://gargacsnishant:mongonishant@cluster0.kmii7.mongodb.net/college2024?retryWrites=true&w=majority&appName=Cluster0");
+const college2024 = mongoose.createConnection("mongodb+srv://vikashmishra8371:raXxlY7Qxp9RITrb@cluster0.ouwkxt4.mongodb.net/college2024?retryWrites=true&w=majority&appName=Cluster0");
+// const college2024 = mongoose.createConnection("mongodb+srv://gargacsnishant:mongonishant@cluster0.kmii7.mongodb.net/college2024?retryWrites=true&w=majority&appName=Cluster0");
 // const college2024 = mongoose.createConnection('mong1odb://127.0.0.1:27017/college2024');
 //student Schema
 // name ,email,password,year,dob,created_at
