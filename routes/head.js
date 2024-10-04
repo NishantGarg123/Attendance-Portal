@@ -58,7 +58,7 @@ router.get("/attendance/head", (req, res) => {
 router.post("/attendance/head", wrapAsync(async (req, res, next) => {
     try{
         let { email, password } = req.body;
-        // const result = await Admin.findOne({ email: email })
+        const result = await Admin.findOne({ email: email })
         // if (password != result.adminPass) {
         //     // next(new ExpressError(405, "Invalid Credentials"));
         //     req.flash("success" , "Invalid Credentials");
