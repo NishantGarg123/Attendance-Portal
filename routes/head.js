@@ -59,15 +59,15 @@ router.post("/attendance/head", wrapAsync(async (req, res, next) => {
     try{
         let { email, password } = req.body;
         const result = await Admin.findOne({ email: email })
-        // if (password != result.adminPass) {
-        //     // next(new ExpressError(405, "Invalid Credentials"));
-        //     req.flash("success" , "Invalid Credentials");
-        //     res.redirect("/attendance/head");  
-        // }
-        // else {
-            //welcome to the our head showing all information
+        if (password != result.adminPass) {
+            // next(new ExpressError(405, "Invalid Credentials"));
+            req.flash("success" , "Invalid Credentials");
+            res.redirect("/attendance/head");  
+        }
+        else {
+            // welcome to the our head showing all informations
             res.render("head/TeacherStudent.ejs", { result });
-        // }
+        }
     }catch(err){
         req.flash("success" , err.message);
         res.redirect("/attendance/head");  
@@ -76,9 +76,9 @@ router.post("/attendance/head", wrapAsync(async (req, res, next) => {
 
 router.post("/attendance/head/studentsInfo", wrapAsync(async (req, res, next) => {
     try{
-        let { year } = req.body;
-        let result = await Student.find({ year: year })
-         res.render("head/AllYearStudent.ejs", { result, year });
+        let { year , branch } = req.body;
+        let result = await Student.find({ year: year , branch:branch })
+         res.render("head/AllYearStudent.ejs", { result, year , branch });
     }catch(err){
         req.flash("success" , err.message);
         res.redirect("/attendance/head/studentsInfo");  

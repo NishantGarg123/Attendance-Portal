@@ -9,12 +9,19 @@
         <form method="post" action="/attendance/head/studentsInfo" >
             <h4>Select the year to find all student</h4>
             <select name="year" id="" class="form-select mt-3" aria-label="Default select example">
-                <option value="">Select year</option>
+                <option selected >Select year</option>
                 <option value="1">First year</option>
                 <option value="2">Second year</option>
                 <option value="3">Third year</option>
                 <option value="4">Fourth year</option>
-            </select><br>   
+            </select>  
+            <select class="form-select form-control" aria-label="Default select example" name="branch">
+                <option selected>-select brach-</option>
+                <option value="cs">Computer science Engineering</option>
+                <option value="ee">Electrical Engineering</option>
+                <option value="ec">Electronics Engineering</option>
+                <option value="me">Mechanical Engineering</option>
+        </select>
             <button class="btn btn-dark">find student</button>
         </form>
         <hr>
