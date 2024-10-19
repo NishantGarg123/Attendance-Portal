@@ -97,12 +97,17 @@ body{
     text-align: center;
     display: flex;
      height: 8rem;
-    background-color: #ebebeb;
+    /* background-color: #ebebeb; */
+    background-color: rgb(19, 22, 61);
     flex-wrap: wrap;
     justify-content: center;
 }
 a{
-    text-decoration: none;
+    text-decoration: none !important;
+    color: white !important;
+}
+.icons{
+
     color: white;
 }
 /* ====================================================================================>> */
