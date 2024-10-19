@@ -100,9 +100,9 @@ body{
     flex-wrap: wrap;
     justify-content: center;
 }
-.copyright{
-
+a{
     text-decoration: none;
+    color: white;
 }
 /* ====================================================================================>> */
 
