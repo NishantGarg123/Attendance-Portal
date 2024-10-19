@@ -100,7 +100,10 @@ body{
     flex-wrap: wrap;
     justify-content: center;
 }
+.copyright{
 
+    text-decoration: none;
+}
 /* ====================================================================================>> */
 
 
