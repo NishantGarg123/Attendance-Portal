@@ -170,6 +170,19 @@ router.get("/attendance/:id/:subjectName",isLoggedIn, wrapAsync(async(req, res ,
         res.render("student/subject.ejs", { result, subjectName , teacherResult });
 }));
 
+// ===================================================================================================>>
+    // Routes of privacy terms and conditions
+    router.get("/attendance/privacy" , (req ,res)=>{
+
+        res.render("conditions/privacy.ejs");
+    });
+    router.get("/attendance/terms" , (req ,res)=>{
+
+        res.render("conditions/privacy.ejs");
+    });
+
+// ===================================================================================================>>
+
 //create route
 router.get("/attendance/create", (req, res) => {
     res.render("student/create.ejs");
