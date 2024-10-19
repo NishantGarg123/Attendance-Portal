@@ -178,7 +178,7 @@ router.get("/attendance/:id/:subjectName",isLoggedIn, wrapAsync(async(req, res ,
     });
     router.get("/attendance/terms" , (req ,res)=>{
 
-        res.render("conditions/privacy.ejs");
+        res.render("conditions/terms.ejs");
     });
 
 // ===================================================================================================>>
