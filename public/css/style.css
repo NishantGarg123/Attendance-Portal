@@ -11,11 +11,6 @@ body{
     border: .09rem solid !important;
 }
 
-.Services 
-{
-    min-height: 12rem;
-    background-color: #f4f1f1;
-}
 .btn a{
     text-decoration: none;
 }
@@ -121,6 +116,39 @@ body{
 }
 
 /* ====================================================================================>> */
+
+
+/* ====================================================================================>> */
+/* //service and about us section */
+
+.service-section{
+
+    /* background-color: rgb(19, 22, 61) ; */
+    background-color: #3A6D8C;
+    color: white;
+    min-height: 20rem;
+}
+strong{
+    font-size: 2rem;
+    margin-left: 40%;
+}
+.about-section{
+
+    /* background-color: rgb(19, 22, 61) ; */
+    background-color: #6A9AB0;
+    color: white;
+    min-height: 20rem;
+}
+.contact-section{
+
+    /* background-color: rgb(19, 22, 61) ; */
+    background-color:  #08C2FF;
+    color: white;
+    min-height: 20rem;
+}
+
+/* ====================================================================================>> */
+
 #home-image{
 
     height: 50vh !important;
