@@ -26,15 +26,15 @@
                                 <% result.forEach(function(student) { %>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="student" value="<%= student._id %>">
+                                            <%= student.username %><br>
                                         </td>
                                         <td>
-                                            <%= student.username %><br>
+                                            <input type="checkbox" name="student" value="<%= student._id %>">
                                         </td>
                                     </tr>
                                         <% }); %>
                                             <br>
-                                    <button class="btn btn-dark" type="submit">Mark Attendance</button>
+                                    <button class="btn btn-dark ms-auto" type="submit">Mark Attendance</button>
                             </form>
                     
                     </table>
