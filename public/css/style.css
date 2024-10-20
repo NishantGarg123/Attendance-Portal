@@ -124,7 +124,8 @@ body{
 .service-section{
 
     /* background-color: rgb(19, 22, 61) ; */
-    background-color: #3A6D8C;
+    background-color: #6A9AB0;
+    
     color: white;
     min-height: 20rem;
 }
@@ -135,14 +136,14 @@ strong{
 .about-section{
 
     /* background-color: rgb(19, 22, 61) ; */
-    background-color: #6A9AB0;
+    background-color: #3A6D8C;
     color: white;
     min-height: 20rem;
 }
 .contact-section{
 
     /* background-color: rgb(19, 22, 61) ; */
-    background-color:  #08C2FF;
+    background-color:  #040b55;
     color: white;
     min-height: 20rem;
 }
