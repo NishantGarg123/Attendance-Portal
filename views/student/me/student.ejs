@@ -5,21 +5,22 @@
     <div class="col-md-6">
         <img src="student-attendance-page-image.webp" alt=" image is loading">
     </div>
-    <h2>Welcome ! <b><%= result.username %></b></h2>
-    <h3>email - <%= result.email %></h3>
-    <h2>Overall percentage = 
-        <% { %>
-            <% let totalLecture = att.length %>
-            <% let attemptLecture=0 %>
-            <% for(currAtt of att) {%>
-                <% if (currAtt.present) { %>
-                    <% attemptLecture++ %>
-                <% } %>
-            <% } %>
-            <%= ((attemptLecture/totalLecture)*100).toFixed(2) %>
-        <% } %>
-        %</h2>
+    
     <div class="col-md-6>
+        <h2>Welcome ! <b><%= result.username %></b></h2>
+        <h3>email - <%= result.email %></h3>
+        <h2>Overall percentage = 
+            <% { %>
+                <% let totalLecture = att.length %>
+                <% let attemptLecture=0 %>
+                <% for(currAtt of att) {%>
+                    <% if (currAtt.present) { %>
+                        <% attemptLecture++ %>
+                    <% } %>
+                <% } %>
+                <%= ((attemptLecture/totalLecture)*100).toFixed(2) %>
+            <% } %>
+            %</h2>
     </div>
 </div>
     
