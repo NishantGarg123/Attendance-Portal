@@ -28,9 +28,9 @@ const studentPresentSchema =new Schema({
 
 //year 4
 // Ml, Distribution, CloudComputing, Rd, Qm, DataWare
-module.exports.Ml = year4cs2024.model("CSMl", studentPresentSchema);
-module.exports.Distribution = year4cs2024.model("CSDistribution", studentPresentSchema);
-module.exports.Qm = year4cs2024.model("CSQm", studentPresentSchema);
-module.exports.Rd = year4cs2024.model("CSRd", studentPresentSchema);
-module.exports.DataWare = year4cs2024.model("CSDataWare", studentPresentSchema);
-module.exports.CloudComputing = year4cs2024.model("CSCloudComputing", studentPresentSchema);
+module.exports.CSMl = year4cs2024.model("CSMl", studentPresentSchema);
+module.exports.CSDistribution = year4cs2024.model("CSDistribution", studentPresentSchema);
+module.exports.CSQm = year4cs2024.model("CSQm", studentPresentSchema);
+module.exports.CSRd = year4cs2024.model("CSRd", studentPresentSchema);
+module.exports.CSDataWare = year4cs2024.model("CSDataWare", studentPresentSchema);
+module.exports.CSCloudComputing = year4cs2024.model("CSCloudComputing", studentPresentSchema);

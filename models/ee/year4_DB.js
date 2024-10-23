@@ -28,9 +28,9 @@ const studentPresentSchema =new Schema({
 
 //yearee 4
 // HighVoltageEngineering , Electricdrives , OpenElectiveII , OpenElectiveIII , OpenElectiveIV
-module.exports.HighVoltageEngineering= year4ee2024.model("EEHighVoltageEngineering", studentPresentSchema);
-module.exports.Electricdrives= year4ee2024.model("EEElectricdrives", studentPresentSchema);
-module.exports.OpenElectiveII= year4ee2024.model("EEOpenElectiveII", studentPresentSchema);
-module.exports.OpenElectiveIII = year4ee2024.model("EEOpenElectiveIII", studentPresentSchema);
-module.exports.OpenElectiveIV = year4ee2024.model("EEOpenElectiveIV", studentPresentSchema);
+module.exports.EEHighVoltageEngineering= year4ee2024.model("EEHighVoltageEngineering", studentPresentSchema);
+module.exports.EEElectricdrives= year4ee2024.model("EEElectricdrives", studentPresentSchema);
+module.exports.EEOpenElectiveII= year4ee2024.model("EEOpenElectiveII", studentPresentSchema);
+module.exports.EEOpenElectiveIII = year4ee2024.model("EEOpenElectiveIII", studentPresentSchema);
+module.exports.EEOpenElectiveIV = year4ee2024.model("EEOpenElectiveIV", studentPresentSchema);
 

@@ -147,10 +147,10 @@ router.get("/attendance/dashboard" ,isLoggedIn , wrapAsync(async(req , res , nex
                 att= att.concat(res);
                 }
             }
-            if(year == 4){
+            if (year == 4){
                 for(sub of (branch)[3] ){
                     const currSub = eval(sub);
-                    let res = await currSub.find({id:id});            
+                    let res = await currSub.find({id:id});           
                 att= att.concat(res);
                 }
             }          

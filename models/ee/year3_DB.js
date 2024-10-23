@@ -31,16 +31,16 @@ const studentPresentSchema =new Schema({
 // PowerSystemI, ControlSystem , ElectricalMachinesII , SensorsandTransducers , NeuralNetworksFuzzySystem , ConstitutionofIndia
 //PowerSystemII , MicroprocessorandMicrocontroller , PowerElectronics  , DigitalControlSystem , OpenElectiveI , EssenceofIndianTraditionalKnowledge
 
-module.exports.PowerSystemI  = year3ee2024.model("EEPowerSystemI", studentPresentSchema);
-module.exports.ControlSystem= year3ee2024.model("EEControlSystem ", studentPresentSchema);
-module.exports.ElectricalMachinesII= year3ee2024.model("EEElectricalMachinesII ", studentPresentSchema);
-module.exports.SensorsandTransducers = year3ee2024.model("EESensorsandTransducers", studentPresentSchema);
-module.exports.NeuralNetworksFuzzySystem= year3ee2024.model("EENeuralNetworksFuzzySystem", studentPresentSchema);
-module.exports.ConstitutionofIndia= year3ee2024.model("EEConstitutionofIndia", studentPresentSchema);
+module.exports.EEPowerSystemI  = year3ee2024.model("EEPowerSystemI", studentPresentSchema);
+module.exports.EEControlSystem= year3ee2024.model("EEControlSystem ", studentPresentSchema);
+module.exports.EEElectricalMachinesII= year3ee2024.model("EEElectricalMachinesII ", studentPresentSchema);
+module.exports.EESensorsandTransducers = year3ee2024.model("EESensorsandTransducers", studentPresentSchema);
+module.exports.EENeuralNetworksFuzzySystem= year3ee2024.model("EENeuralNetworksFuzzySystem", studentPresentSchema);
+module.exports.EEConstitutionofIndia= year3ee2024.model("EEConstitutionofIndia", studentPresentSchema);
 
-module.exports.PowerSystemII= year3ee2024.model("EEPowerSystemII", studentPresentSchema);
-module.exports.MicroprocessorandMicrocontroller= year3ee2024.model("EEMicroprocessorandMicrocontroller ", studentPresentSchema);
-module.exports.PowerElectronics= year3ee2024.model("EEPowerElectronics", studentPresentSchema);
-module.exports.DigitalControlSystem= year3ee2024.model("EEDigitalControlSystem", studentPresentSchema);
-module.exports.OpenElectiveI= year3ee2024.model("EEOpenElectiveI", studentPresentSchema);
-module.exports.EssenceofIndianTraditionalKnowledge= year3ee2024.model("EEEssenceofIndianTraditionalKnowledge", studentPresentSchema);
+module.exports.EEPowerSystemII= year3ee2024.model("EEPowerSystemII", studentPresentSchema);
+module.exports.EEMicroprocessorandMicrocontroller= year3ee2024.model("EEMicroprocessorandMicrocontroller ", studentPresentSchema);
+module.exports.EEPowerElectronics= year3ee2024.model("EEPowerElectronics", studentPresentSchema);
+module.exports.EEDigitalControlSystem= year3ee2024.model("EEDigitalControlSystem", studentPresentSchema);
+module.exports.EEOpenElectiveI= year3ee2024.model("EEOpenElectiveI", studentPresentSchema);
+module.exports.EEEssenceofIndianTraditionalKnowledge= year3ee2024.model("EEEssenceofIndianTraditionalKnowledge", studentPresentSchema);
