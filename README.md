@@ -18,3 +18,9 @@ Student will we able to find out their attendance of college and get how much pe
 
 # college id password for students
  123
+
+# some screen shots
+![alt text](<Screenshot 2024-12-21 164217.png>)
+![alt text](<Screenshot 2024-12-21 164347.png>)
+![alt text](<Screenshot 2024-12-21 164238.png>)
+![alt text](<Screenshot 2024-12-21 164333.png>)
